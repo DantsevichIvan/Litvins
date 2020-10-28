@@ -1,13 +1,25 @@
-.app {
-    overflow: hidden;
+
+
+.otherTitle {
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #302E35;
+    text-align: left;
 }
 .wrap {
     margin-top: 20px;
 }
+
 .btn span{
     font-size: 36px;
     border-radius: 50%;
     background: rgba(182, 31, 31, 0.2);
+}
+.item{
+    padding: 0 2px;
 }
 
 @media screen and (max-width: 1100px) {

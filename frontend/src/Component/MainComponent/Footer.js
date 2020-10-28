@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "../../style/Footer.module.css"
-// import {faVk, faTwitter, faYoutube, faInstagram, faGoogle} from '@fortawesome/free-brands-svg-icons'
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import logo from './../../logo/Litvin-LOGO.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faMapMarkerAlt, faPhoneAlt, faAngleRight, faChevronRight} from "@fortawesome/free-solid-svg-icons";
-// import arrow from './../../logo/—Pngtree—right arrow line black icon_4008091.png'
+import {faEnvelope, faMapMarkerAlt, faPhoneAlt} from "@fortawesome/free-solid-svg-icons";
 
 const inputSubmitStyle = {
     // backgroundImg: 'url(' + arrow + ')',

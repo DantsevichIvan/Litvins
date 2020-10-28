@@ -1,0 +1,76 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.infoAboutMatch{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.infoTeam{
+    padding-bottom: 10px;
+}
+
+.infoTeam span{
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.vs{
+    color: #D31326 !important;
+    padding: 15px;
+}
+
+.infoMatch{
+    display: flex;
+}
+.infoMatch div{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-right: 40px;
+}
+.infoMatch div span{
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding-bottom: 10px;
+}
+.count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 150px;
+}
+.count span{
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 72px;
+    color: #ffffff;
+    padding: 0 10px;
+}
+.element{
+    font-size: 50px !important;
+}
+.link{
+    display: flex;
+    align-items: flex-end;
+}
+.link a{
+    padding: 0 0 14px 40px;
+    color: #ffffff;
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
+}

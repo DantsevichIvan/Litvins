@@ -2,10 +2,10 @@ import React, {Suspense} from 'react';
 import {Route, Switch} from "react-router-dom";
 import Header from "./Component/MainComponent/Header";
 import Footer from "./Component/MainComponent/Footer";
-import ScrollToTop from "./Component/ScrollToTop";
+import ScrollToTop from "./Component/innerComponent/ScrollToTop";
 import './App.css';
 import 'antd/dist/antd.css';
-import {Loading} from "./Component/Loading";
+import {Loading} from "./Component/innerComponent/Loading";
 
 const HomePage = React.lazy(() => import('./Component/MainComponent/HomePage'));
 const Team = React.lazy(() => import('./Component/MainComponent/Team'));

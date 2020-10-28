@@ -1,0 +1,15 @@
+.number{
+    color: #D31326;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-right: 5px;
+    font-size: 30px;
+    font-family: Montserratб,sans-serif;
+
+}
+.word{
+    color: #ffffff;
+    font-weight: 600;
+    padding-right: 10px;
+    font-family: Montserratб,sans-serif;
+}

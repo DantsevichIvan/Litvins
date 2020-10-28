@@ -4,10 +4,20 @@
 .header {
     height: 50vh
 }
-
-.container {
-    background: #363533;
+.content{
     display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: auto;
+    align-items: center;
+}
+.container {
+    /*background: #363533;*/
+    display: flex;
+    justify-content: center;
+    width: max-content;
+    align-items: center;
+    margin: auto;
 }
 
 .labelMenu {
@@ -25,57 +35,49 @@
 }
 
 .buttonComponent {
-    padding: 19px 0 18px 0;
-    margin-right: 50px;
+    width: 224px;
+    padding: 12px 24px;
+    margin: 35px 25px;
     border: none;
-    background: none;
     outline: none;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
     font-weight: 600;
     color: #fff;
-    text-transform: uppercase;
+    background: #302E35;
+    border-radius: 5px;
 }
 
 .buttonComponent:hover {
-    color: #ed1c27;
+    background: #9F1B1B;
+    transition: 0.3s;
+}
+.title{
+    margin-bottom:40px;
+    margin-left: 25px;
+    align-self: flex-start;
+}
+.title span{
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 24px;
+    color: #302E35;
+    text-align: left;
 }
 
 .listPlayers {
     position: relative;
     height: max-content;
-    margin: 20px 0 40px;
+    margin: 10px 0 40px;
     display: flex;
     justify-content: center;
-}
-
-.leftPlayer {
-    position: absolute;
-    left: 0;
-    top: 30px;
-    max-height: 757px;
-    height: 100%;
-    box-sizing: border-box;
-    transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-    -webkit-transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-}
-
-.rightPlayer {
-    position: absolute;
-    text-align: right;
-    right: 0;
-    top: 30px;
-    max-height: 776px;
-    height: 100%;
-    box-sizing: border-box;
-    transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-    -webkit-transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
 }
 
 .containerCenter {
     position: relative;
     z-index: 0;
-    margin: 20px 40px 0;
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 428px 428px;

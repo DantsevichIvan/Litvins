@@ -1,28 +1,10 @@
 const paginate = require('jw-paginate')
 const {Router} = require('express');
 const router = Router();
+const News = require('./../models/News')
+const moment = require('moment')
 
 
-const arrNews = [
-    {id: 1, name: 'Тренировка сегодня'},
-    {id: 2, name: 'ДР Кости'},
-    {id: 3, name: 'Тренирвка во вторник'},
-    {id: 4, name: 'ДР Денис'},
-    {id: 5, name: 'Тренировка завтра'},
-    {id: 6, name: 'Игра завершилась со счетом 5/2'},
-    {id: 7, name: 'Тренировка сегодня'},
-    {id: 8, name: 'Гуляем в бане'},
-    {id: 9, name: 'Пьем в баре'},
-    {id: 10, name: 'Тренировка сегодня'},
-    {id: 11, name: 'ДР Кости'},
-    {id: 12, name: 'Тренирвка во вторник'},
-    {id: 13, name: 'ДР Денис'},
-    {id: 14, name: 'Тренировка завтра'},
-    {id: 15, name: 'Игра завершилась со счетом 5/2'},
-    {id: 16, name: 'Тренировка сегодня'},
-    {id: 17, name: 'Гуляем в бане'},
-    {id: 18, name: 'Пьем в баре'}
-]
 
 function getPaginator(req, arr) {
     const currentPage = parseInt(req.query.page) || 1;
@@ -31,11 +13,15 @@ function getPaginator(req, arr) {
     const pageOfItems = arr.slice(pager.startIndex, pager.endIndex + 1);
     return {pager, pageOfItems}
 }
-
 router.get('/', async (req, res, next) => {
     try {
-        console.log(getPaginator(req, arrNews))
-        await res.json(getPaginator(req, arrNews));
+        const news = await News.find({}).lean()
+        let newsList = getPaginator(req, news)
+        if (!newsList.pageOfItems.length){
+            await res.json({pageOfItems:[],message: 'Новостей нету'});
+        }else {
+            await res.json(newsList);
+        }
     } catch (e) {
         console.log(e)
     }
@@ -43,12 +29,24 @@ router.get('/', async (req, res, next) => {
 });
 router.get('/news/:newsId', async (req, res, next) => {
     try {
-        const searchNews = parseInt(req.params.newsId)
-        const news = arrNews.find(news => news.id === searchNews)
+        const searchNews = req.params.newsId
+        const news = await News.findById(searchNews)
         res.json(news)
     } catch (e) {
         console.log(e)
     }
     next()
-})
+});
+router.post('/news', async (req, res, next) => {
+    try {
+        const {nameNews, newsDate, textNews} = req.body.newsInfo
+        let dataValue = moment(newsDate).format('ll')
+        const news = new News({nameNews,dataValue,textNews});
+        await news.save()
+        res.status(201).json({message:"Новость добавлена"})
+    } catch (e) {
+        console.log(e)
+    }
+});
+
 module.exports = router

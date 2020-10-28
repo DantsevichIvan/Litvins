@@ -1,8 +1,9 @@
 import styles from "../../style/InnerComponent.module.css";
 import React from "react";
 import cn from "classnames";
-import {Form, Radio, TimePicker,DatePicker,Input} from 'antd';
+import {Form, Radio, TimePicker,DatePicker,Input, InputNumber} from 'antd';
 
+const {TextArea} = Input
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const formItemLayout = {
@@ -24,7 +25,7 @@ export const makeField = Component => ({ input, meta,children,hasFeedback, label
             validateStatus={hasError ? "error" : "success"}
             hasFeedback={hasFeedback && hasError}
             help={hasError && meta.error}
-            className={styles.formItem}
+            // className={styles.formItem}
         >
             <Component
                 {...input}
@@ -33,22 +34,38 @@ export const makeField = Component => ({ input, meta,children,hasFeedback, label
                 format={rest.defaultData? rest.defaultData._f: null}
                 size={'large'}
                 value={rest.defaultValue}
-                className={styles.fieldComponent}
+                // className={styles.fieldComponent}
             />
         </FormItem>
     );
 };
+export const inputField = Component => ({ input, meta,children,hasFeedback, label, defaultValue }) => {
+    const hasError = meta.touched && meta.invalid;
+    return (
+        <FormItem
+            {...formItemLayout}
+            label={label}
+            validateStatus={hasError ? "error" : "success"}
+            hasFeedback={hasFeedback && hasError}
+            help={hasError && meta.error}
+            // className={styles.formItem}
+        >
+            <Component
+                {...input}
+                children={children}
+                defaultValue={defaultValue}
+            />
+        </FormItem>
+    );
+};
+
+
 export const ADatePicker = makeField(DatePicker);
 export const ATimePicker = makeField(TimePicker);
 export const AInput = makeField(Input);
 export const ARadioGroup = makeField(RadioGroup);
-
-
-
-
-
-
-
+export const AInputNumber = inputField(InputNumber);
+export const AInputTextArea = inputField(TextArea);
 
 
 export const renderInput = ({input, label, type,placeholder,defaultValue, meta: {touched, error, warning}, ...props}) => (
@@ -62,6 +79,8 @@ export const renderInput = ({input, label, type,placeholder,defaultValue, meta: 
         </div>
     </div>
 )
+
+
 export const renderFieldStatistic = ({ input, label,placeholder, type, meta: { touched, error } }) => (
     <div className={styles.fieldStatistic}>
         <label>{label}</label>

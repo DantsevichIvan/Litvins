@@ -4,7 +4,7 @@ import avatar from "../../logo/f401649c954a6ca111acf083eac616cf.jpg"
 import SliderPlayers from "../Sliders/SliderPlayers";
 import {useDispatch, useSelector} from "react-redux";
 import {getPlayer, getPlayers} from "../../redux/TeamReducer";
-import {IndicatorStatistic} from "../IndicatorStatistic";
+import {IndicatorStatistic} from "../innerComponent/IndicatorStatistic";
 import {ContainerInfo} from "../ContainerInfo";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {Progress} from "antd";
@@ -29,7 +29,6 @@ export default function InfoPlayer(props) {
         getInfoPlayer()
         dispatch(getPlayers(1, 15))
     }, [])
-    console.log(player)
     return (
         <div className={styles.wrap}>
 
@@ -86,10 +85,7 @@ export default function InfoPlayer(props) {
 
             <div className={styles.sliderContainer}>
                 <div className={styles.container}>
-                    <h3 className={styles.otherTitle}>Другие игроки</h3>
-                    <div className={styles.playerWrap}>
-                        <SliderPlayers players={players}/>
-                    </div>
+                    <SliderPlayers players={players} title={'Другие игроки'}/>
                 </div>
             </div>
         </div>

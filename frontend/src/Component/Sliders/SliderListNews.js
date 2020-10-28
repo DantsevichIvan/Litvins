@@ -9,12 +9,8 @@ import newsImg3 from "../../logo/Best-Football-Score-Apps-for-Android-feature-im
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
-const listNewsArr = [
-    {img:{backgroundImage:`url(${newsImg1})`}, id:1, data: 'March 25, 2020',title:'INTERDUM ET MALESUADA FAMES AC ANTE IPSUM PRIMIS IN FAUCIBUS'},
-    {img:{backgroundImage:`url(${newsImg2})`},id:2, data: 'April 20, 2020',title:'SUSPENDISSE PURUS ENIM, DICTUM SED LOREM AC, SODALES MAXIMUS EST'},
-    {img:{backgroundImage:`url(${newsImg3})`},id:3, data: 'May 9, 2020',title:'NUNC IN INTERDUM NEQUE. MAURIS TINCIDUNT MOLESTIE FELIS'}
-]
 export default class SliderListNews extends React.PureComponent {
     state = {mouseTrackingEnabled: true, preventEventOnTouchMove: true}
     responsive = {
@@ -28,6 +24,7 @@ export default class SliderListNews extends React.PureComponent {
     }
     render() {
         const {mouseTrackingEnabled, preventEventOnTouchMove} = this.state
+        const { newsList} = this.props
         return (
             <div className={styles.wrapper} id="app">
                 <div className={styles.wrapper__container}>
@@ -56,16 +53,16 @@ export default class SliderListNews extends React.PureComponent {
                     autoPlayInterval={4000}
                     ref={(el) => (this.Carousel = el)}
                 >
-                    {listNewsArr.map((news) => {
+                    {newsList.map((news) => {
                         return (
-                            <div className={styles.item} key={news.id}>
-                                <div className={styles.item__img} style={news.img}></div>
+                            <div className={styles.item} key={news._id}>
+                                {/*<div className={styles.item__img} style={news.img}></div>*/}
                                 <div className={styles.item__info}>
                                     <div className={styles.item__info__data}>
-                                        <span>{news.data}</span>
+                                        <span>{moment(news.dataValue).format('LL')}</span>
                                     </div>
                                     <div className={styles.item__info__name}>
-                                        <h4><NavLink to='#'>{news.title}</NavLink></h4>
+                                        <h4><NavLink to='#'>{news.nameNews}</NavLink></h4>
                                     </div>
                                 </div>
                             </div>

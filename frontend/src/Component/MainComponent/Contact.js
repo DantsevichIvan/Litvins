@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import styles from '../../style/Contact.module.css'
-import HeaderContainer from "../HeaderContainer";
+import HeaderContainer from "../innerComponent/HeaderContainer";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faVk, faTwitter, faYoutube, faInstagram, faGoogle} from '@fortawesome/free-brands-svg-icons'
 import {NavLink} from "react-router-dom";
@@ -14,7 +14,7 @@ export default function Contact() {
 
     useEffect(() => {
         dispatch(getContacts())
-    },[])
+    },[dispatch])
 
     return (
         <div className={styles.wrapper}>

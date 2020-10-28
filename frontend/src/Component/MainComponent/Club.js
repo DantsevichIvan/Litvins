@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from '../../style/Club.module.css'
 import CurrentYears from "../CurrentYears";
 import SliderAwards from "../Sliders/SliderAwards";
-import HeaderContainer from "../HeaderContainer";
+import HeaderContainer from "../innerComponent/HeaderContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {getInfoClubPage, getInfoYear} from "../../redux/ClubReducer";
 
@@ -13,8 +13,7 @@ export default function Club (){
 
     useEffect(()=>{
         dispatch(getInfoClubPage())
-
-    },[])
+    },[dispatch])
     const currentActiveClass = (id) => {
         dispatch(getInfoYear(id))
     }

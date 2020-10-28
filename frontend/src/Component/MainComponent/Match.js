@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import HeaderContainer from "../HeaderContainer";
+import HeaderContainer from "../innerComponent/HeaderContainer";
 import styles from '../../style/Match.module.css'
 import AsideContainer from "./AsideContainer";
-import SimpleMap from "../SimpleMap";
+import SimpleMap from "../innerComponent/SimpleMap";
 import arrangement from '../../logo/rI61HzFz5pc.jpg'
-import GalleryPhotosMatch from "../GalleryPhotosMatch";
+import GalleryPhotosMatch from "../Sliders/GalleryPhotosMatch";
 import {useDispatch, useSelector} from "react-redux";
 import {getMatch} from "../../redux/MatchsReducer";
 
@@ -19,14 +19,11 @@ export default function Match(props) {
         <div className={styles.wrapper}>
             <div className={styles.header}>
                 <HeaderContainer
-                    teams={[match.team,match.opposingTeam]}
-                    game={match.game}
-                    extraInfo={true}
+                    nextMatch={match}
                     activeLink={'Matches List'}
                     header={true}
                     link={'list-matches'}
                     childrenLink={'ENGLAND VS AMSTERDAM'}
-                    dateTime={match.dateTime}
                 />
             </div>
             <div className={styles.container}>

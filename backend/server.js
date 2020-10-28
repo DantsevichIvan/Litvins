@@ -7,11 +7,23 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const MongoStore = require('connect-mongo')(session);
 
+
+
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({extended: false})
 const PORT = process.env.PORT || 4000
 const host = '123.45.678.901'
 
+
+
+// const storageConfig = multer.diskStorage({
+//     destination: (req, file, cb) =>{
+//         cb(null, "uploads");
+//     },
+//     filename: (req, file, cb) =>{
+//         cb(null, file.originalname);
+//     }
+// });
 
 app.use(bodyParser.json());
 app.use(express.json({extended: true}));
@@ -38,10 +50,11 @@ app.use('/', cors({origin: 'http://localhost:3000'}), require('./routes/home.rou
 app.use('/team', cors({origin: 'http://localhost:3000'}), require('./routes/team.routes'));
 app.use('/list-matches',urlencodedParser, cors({origin: 'http://localhost:3000'}), require('./routes/listMatches.routes'));
 app.use('/club', cors({origin: 'http://localhost:3000'}), require('./routes/club.routes'));
-app.use('/list-news', cors({origin: 'http://localhost:3000'}), require('./routes/listNews.routes'));
+app.use('/list-news',urlencodedParser, cors({origin: 'http://localhost:3000'}), require('./routes/listNews.routes'));
 app.use('/contact', cors({origin: 'http://localhost:3000'}), require('./routes/contact.routes'));
 app.use('/auth', urlencodedParser, cors({origin: 'http://localhost:3000'}), require('./routes/auth.router'));
 app.use('/register', urlencodedParser, cors({origin: 'http://localhost:3000'}), require('./routes/registration.router'));
+app.use('/api/image', urlencodedParser, cors({origin: 'http://localhost:3000'}), require('./routes/image.router'));
 
 
 

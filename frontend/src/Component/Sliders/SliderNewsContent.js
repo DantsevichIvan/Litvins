@@ -6,6 +6,7 @@ import AliceCarousel from "react-alice-carousel";
 import newsImg1 from "../../logo/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg";
 import newsImg2 from "../../logo/5276.jpg";
 import newsImg3 from "../../logo/Best-Football-Score-Apps-for-Android-feature-image.jpg";
+import moment from "moment";
 
 export const newsArr = [
     {img:{backgroundImage:`url(${newsImg1})`}, id:1, data: 'March 25, 2020', user:'Guest',categories:'Life'},
@@ -21,9 +22,9 @@ export default class SliderNewsContent extends React.PureComponent {
         paddingLeft: 0,
         paddingRight: 0,
     }
-
     render() {
         const {mouseTrackingEnabled, preventEventOnTouchMove} = this.state
+        const {dataValue} = this.props
         return (
             <div className={styles.wrap} id="app">
                 <div className={styles.item__wrap__btn}>
@@ -54,7 +55,7 @@ export default class SliderNewsContent extends React.PureComponent {
                                 <div className={styles.item__bottom}>
                                     <div className={styles.item__bottom__data}>
                                         <FontAwesomeIcon icon={faCalendarAlt}/>
-                                        <span>{news.data}</span>
+                                        <span>{moment(dataValue).format('LL')}</span>
                                     </div>
                                     <div className={styles.item__bottom__author}>
                                         <FontAwesomeIcon icon={faUser}/>

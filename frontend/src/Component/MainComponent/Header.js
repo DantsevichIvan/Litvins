@@ -15,6 +15,8 @@ const links = [
     {title: 'Контакты', address: "/contact", id:6}
 ]
 export default class Header extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +38,6 @@ export default class Header extends React.Component {
                         <div className={styles.wrapper}>
                             <div className={styles.logotip}>
                                 <img src={logo} alt=""/>
-                                <span>Лицвины тут</span>
                             </div>
                             <ul className={styles.item}>
                                 <NavLink exact to="/" activeClassName={styles.activeLink}>Главная</NavLink>

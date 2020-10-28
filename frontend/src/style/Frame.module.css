@@ -1,0 +1,32 @@
+.r1_1, .r1_2, .r2_1, .r2_2 {
+    position: absolute;
+    background: #D31326;
+}
+
+.r1_1 {
+    left: -45px;
+    top: -16px;
+    width: 60px;
+    height: 15px;
+}
+
+.r1_2 {
+    left: -45px;
+    top: -16px;
+    width: 15px;
+    height: 60px;
+}
+
+.r2_1 {
+    right: 0;
+    bottom: -30px;
+    width: 60px;
+    height: 15px;
+}
+
+.r2_2 {
+    right: 0;
+    bottom: -30px;
+    width: 15px;
+    height: 60px;
+}

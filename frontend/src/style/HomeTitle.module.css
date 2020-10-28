@@ -1,0 +1,11 @@
+.wrapper__title{
+    display: flex;
+    text-align: left;
+}
+.wrapper__title__name{
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 30px;
+    color: #ffffff;
+}

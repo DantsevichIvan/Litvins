@@ -23,7 +23,7 @@ export default function ArticleContainer({news}) {
                         Nunc a pulvinar lectus.
                     </p>
                     <div className={styles.wrapper__container__article__info__text__readMore}>
-                        <NavLink to={'/list-news/news/' + news.id}>Read More</NavLink>
+                        <NavLink to={'/list-news/news/' + news.id}>Подробнее</NavLink>
                     </div>
                 </div>
             </div>
