@@ -1,7 +1,7 @@
 const paginate = require('jw-paginate')
 const {Router} = require('express');
 const router = Router();
-const Match = require('./../models/Match')
+const Match = require('../models/Match')
 
 const arrNews = [
     {id: 1, name: 'Тренировка сегодня'},

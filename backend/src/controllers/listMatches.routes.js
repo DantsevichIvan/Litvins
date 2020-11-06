@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-const Match = require('./../models/Match')
+const Match = require('../models/Match')
 const moment = require('moment')
 
 router.get('/', async (req, res, next) => {

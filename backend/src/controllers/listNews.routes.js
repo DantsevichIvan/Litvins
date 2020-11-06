@@ -1,7 +1,7 @@
 const paginate = require('jw-paginate')
 const {Router} = require('express');
 const router = Router();
-const News = require('./../models/News')
+const News = require('../models/News')
 const moment = require('moment')
 
 
