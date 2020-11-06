@@ -10,34 +10,34 @@ import SliderPlayers from "../Sliders/SliderPlayers";
 import {StateType} from '../../common/types';
 
 export default function HomePage() {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const state = useSelector((state: StateType) => state)
-  console.log('state ', state )
+  console.log('state ', state)
   debugger
-    const player = useSelector((state: StateType) => state.authPage.isAuth)
-    const lastMatch = useSelector((state: StateType) => state.homePage.lastMatch)
-    const listMatches = useSelector((state: StateType) => state.homePage.listMatches)
-    const newsList = useSelector((state: StateType) => state.homePage.newsList)
-    const nextMatch = useSelector((state: StateType) => state.homePage.nextMatch)
-    const statisticsPlayers = useSelector((state: StateType) => state.homePage.statisticsPlayers)
-    const players = useSelector((state: StateType) => state.teamPage.players)
+  const player = useSelector((state: StateType) => state.authPage.isAuth)
+  const lastMatch = useSelector((state: StateType) => state.homePage.lastMatch)
+  const listMatches = useSelector((state: StateType) => state.homePage.listMatches)
+  const newsList = useSelector((state: StateType) => state.homePage.newsList)
+  const nextMatch = useSelector((state: StateType) => state.homePage.nextMatch)
+  const statisticsPlayers = useSelector((state: StateType) => state.homePage.statisticsPlayers)
+  const players = useSelector((state: StateType) => state.teamPage.players)
 
-    console.log(players)
-    useEffect(() => {
-        dispatch(getInfoHomePage())
-    }, [dispatch])
+  console.log(players)
+  useEffect(() => {
+    dispatch(getInfoHomePage())
+  }, [dispatch])
 
-    // if (!player){
-    //     return <Redirect to={"/registration"} />;
-    // }
+  // if (!player){
+  //     return <Redirect to={"/registration"} />;
+  // }
 
-    return (
-        <div>
-            <HomeHeader/>
-            <LatestResult lastMatch={lastMatch}/>
-            <NextMatches listMatches={listMatches} nextMatch={nextMatch}/>
-            <News newsList={newsList}/>
-            <Statistics statisticsPlayers={statisticsPlayers}/>
-        </div>
-    )
+  return (
+    <div>
+      <HomeHeader/>
+      <LatestResult lastMatch={lastMatch}/>
+      <NextMatches nextMatch={nextMatch}/>
+      <News newsList={newsList}/>
+      <Statistics statisticsPlayers={statisticsPlayers}/>
+    </div>
+  )
 }

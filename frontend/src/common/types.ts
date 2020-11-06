@@ -18,9 +18,15 @@ type AuthPageType = {
   playerId: null | string
 }
 type ClubPageType = {
-  infoForClub: null | string
+  infoForClub: InfoForClubType
   infoYear: Array<number>
 }
+type InfoForClubType = {
+  year: number
+  id: number
+  activeClass: false
+}
+
 type ContactPageType = {
   contacts: Array<number>
 }
@@ -29,7 +35,8 @@ type HomePageType = {
   listMatches: Array<any>
   newsList: Array<any>
   statisticsPlayers: Array<any>
-  infoAboutClub: { text: string, trainers: Array<string | number> }
+  infoAboutClub: any
+  // infoAboutClub: any    - будет удалено
   nextMatch: MatchType
 }
 export type LastMatchType = {
@@ -43,7 +50,7 @@ export type LastMatchType = {
   team: number
 }
 export type MatchType = {
-  dateTime : string
+  dateTime: string
   game: string
   id: string
   location: string
@@ -63,7 +70,7 @@ type NewsPageType = {
   currentPage: number
   message: undefined | string
   messageAdd: string
-  news: {dataValue: string, nameNews: string, textNews: string}
+  news: { dataValue: string, nameNews: string, textNews: string }
   newsList: Array<number>
   pageSize: number
   totalPlayersCount: number
@@ -71,12 +78,17 @@ type NewsPageType = {
 type TeamPageType = {
   currentPage: number
   pageSize: number
-  player: {}
-  players: Array<string | number>
+  player: PlayerType
+  players: Array<PlayerType>
   totalPlayersCount: number
 }
 
-
+type PlayerType = {
+  numberPlayer: number
+  name: string
+  position: string
+  id: number
+}
 
 // Array<string | number>
 
