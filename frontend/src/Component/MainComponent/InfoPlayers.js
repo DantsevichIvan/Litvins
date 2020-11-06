@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from "react";
 import styles from '../../style/InfoPlayer.module.css'
-import avatar from "../../logo/f401649c954a6ca111acf083eac616cf.jpg"
+// import avatar from "../../logo/f401649c954a6ca111acf083eac616cf.jpg"
 import SliderPlayers from "../Sliders/SliderPlayers";
 import {useDispatch, useSelector} from "react-redux";
 import {getPlayer, getPlayers} from "../../redux/TeamReducer";
@@ -47,8 +47,11 @@ export default function InfoPlayer(props) {
                                 <span>30</span>
                             </div>
                         </div>
+                        {/*<div className={styles.avatar}>*/}
+                        {/*    <img src={avatar} alt=""/>*/}
+                        {/*</div>*/}
                         <div className={styles.avatar}>
-                            <img src={avatar} alt=""/>
+                            avatar
                         </div>
                     </div>
                     <div className={styles.infoPlayer}>
