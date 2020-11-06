@@ -10,7 +10,7 @@ export const teamApi = {
         return instance.get(`team?page=${currentPage}&count=${pageSize}`)
             .then(res => res.data)
     },
-    putFilterPlayers(title) {
+    putFilterPlayers(title){
         return instance.put(`team?filter=${title}`, {})
             .then(res => res.data)
     },

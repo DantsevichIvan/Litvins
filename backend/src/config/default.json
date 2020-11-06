@@ -1,0 +1,6 @@
+{
+  "port": 4000,
+  "mongoURL": "mongodb+srv://Ivan:1q2w3e4r@cluster0-hxkhe.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000",
+  "host": "123.45.678.901"
+}
