@@ -18,7 +18,7 @@ export default function Player({player}) {
                     avatar
                 </div>
                 <div className={styles.name}>
-                    <NavLink to={'/team/player/' + player.id}>{player.name}</NavLink>
+                    <NavLink to={'/team/player/' + player._id}>{player.name}</NavLink>
                     <span>Фамилия</span>
                 </div>
                 <div className={styles.position}>

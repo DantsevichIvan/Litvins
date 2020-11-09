@@ -18,7 +18,7 @@ export default function InfoPlayer(props) {
 
     const getInfoPlayer = useCallback(() => {
         try {
-            dispatch(getPlayer(parseInt(props.match.params.userId)))
+            dispatch(getPlayer(props.match.params.userId))
 
         } catch (e) {
             console.log("Error Server")
