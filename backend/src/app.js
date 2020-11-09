@@ -11,9 +11,9 @@ const MongoStore = require('connect-mongo')(session);
 const app = express();
 const PORT = process.env.PORT || 4000
 const ENV = process.env.NODE_ENV || 'Development';
-require('./routers')(app)
 const db = config.get('mongoURL')
 
+require('./routers')(app)
 
 // const storageConfig = multer.diskStorage({
 //     destination: (req, file, cb) =>{
@@ -25,8 +25,6 @@ const db = config.get('mongoURL')
 // });
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}))
-// app.use(express.json({extended: true}));
 
 app.use(session({
     store: new MongoStore({
@@ -45,15 +43,6 @@ if (process.env.NOdE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
-
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-})
-
 module.exports.start = async function start(){
     try {
         connectDB()

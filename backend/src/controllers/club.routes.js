@@ -10,8 +10,8 @@ const infoClub = {
         {year: 2020, id: 5, activeClass: false}
     ],
     textInfo: '',
-
 }
+
 function addActiveData(data, id = 1) {
     let newArr = data.map((el) => {
         if (el.id === id) {

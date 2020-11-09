@@ -87,8 +87,8 @@ export const setFilterPlayers = (players) =>{
 export const getPlayers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(setCurrentPage(currentPage))
     const data = await teamApi.getPlayers(currentPage,pageSize)
-    dispatch(setTotalUsersCount(data.pager.totalItems))
-    dispatch(setPlayers(data.pageOfItems))
+    dispatch(setTotalUsersCount(data.team.pager.totalItems))
+    dispatch(setPlayers(data.team.pageOfItems))
 }
 export const putFilterPlayers = (item) => async (dispatch) =>{
     const data = await teamApi.putFilterPlayers(item)

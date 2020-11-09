@@ -9,7 +9,7 @@ const router = Router();
 router.post('/login', async (req, res, next) => {
     await logIn(req,res)
 })
-router.post('/logout',async (req,res,next)=>{
+router.get('/logout',async (req,res,next)=>{
     await logOut(req, res)
 })
 router.post('/register', async (req, res, next) => {

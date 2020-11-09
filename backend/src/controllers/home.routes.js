@@ -24,7 +24,7 @@ const arrNews = [
     {id: 18, name: 'Пьем в баре'}
 ]
 
-function getPaginator(arr,currentPage, pageSize) {
+function getPaginator(arr, currentPage, pageSize) {
     const pager = paginate(arr.length, currentPage, pageSize)
     const pageOfItems = arr.slice(pager.startIndex, pager.endIndex + 1);
     return {pager, pageOfItems}
@@ -34,25 +34,48 @@ router.get('/homeInfo', async (req, res, next) => {
     try {
         //last Match
 
-        //info about club
-        let infoAboutClub = {text:'Любительское объединение футбола "Литвины" является сообществом людей,увлечённых футболом.' +
-                ' Нас объединяет стремление к здоровому образу жизни и к победе путём совершенствования футбольного мастерства,' +
-                ' постоянных тренировок, поддержания физической формы на самом высоком уровне.' ,trainers:[{img1: 'img1',id:1},{img2:'img2',id:2}]}
         //statistics
         let statisticsPlayers = [
-            {name:'Бомбардиры', listPlayers:[{name:'Данцевич Иван',count:25, id:1},{name:'Cиницкий Денис',count:20,id:2},{name:'Стригуцкий Дмитрий',count:15,id:3}],id:1},
-            {name:'Ассисты', listPlayers:[{name:'Данцевич Иван',count:20,id:1},{name:'Cиницкий Денис',count:18,id:2},{name:'Стригуцкий Дмитрий',count:15,id:3}],id:2},
-            {name:'Лучшие игроки', listPlayers:[{name:'Данцевич Иван',count:5,id:1},{name:'Cиницкий Денис',count:3,id:2},{name:'Стригуцкий Дмитрий',count:2,id:3}],id:3}]
+            {
+                name: 'Бомбардиры',
+                listPlayers: [{name: 'Данцевич Иван', count: 25, id: 1}, {
+                    name: 'Cиницкий Денис',
+                    count: 20,
+                    id: 2
+                }, {name: 'Стригуцкий Дмитрий', count: 15, id: 3}],
+                id: 1
+            },
+            {
+                name: 'Ассисты',
+                listPlayers: [{name: 'Данцевич Иван', count: 20, id: 1}, {
+                    name: 'Cиницкий Денис',
+                    count: 18,
+                    id: 2
+                }, {name: 'Стригуцкий Дмитрий', count: 15, id: 3}],
+                id: 2
+            },
+            {
+                name: 'Лучшие игроки',
+                listPlayers: [{name: 'Данцевич Иван', count: 5, id: 1}, {
+                    name: 'Cиницкий Денис',
+                    count: 3,
+                    id: 2
+                }, {name: 'Стригуцкий Дмитрий', count: 2, id: 3}],
+                id: 3
+            }
+        ]
         //next Match and list Matches score = false
         const matchList = await Match.find({}).lean()
+
         let nextMatch = await Match.findOne({score: false})
-        if (!!nextMatch){
-          nextMatch = {}
+        if (!!nextMatch) {
+            nextMatch = {}
         }
+
         // last news
-        let newsList = getPaginator(arrNews, 1,2)
+        let newsList = getPaginator(arrNews, 1, 2)
         //All info
-        let data = {infoAboutClub,statisticsPlayers,matchList,nextMatch,newsList}
+        let data = {statisticsPlayers, matchList, nextMatch, newsList}
         await res.json(data);
     } catch (e) {
         console.log(e)

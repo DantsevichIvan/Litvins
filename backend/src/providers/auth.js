@@ -32,21 +32,20 @@ async function logIn(req, res){
 
 async function logOut(req, res){
     try {
-        debugger
-        req.session.destroy((err)=>{
-            if (err){
-                console.log(err)
-            }
-        })
-        res.status(200).json({message: 'out in the system'})
+        // req.session.destroy((err)=>{
+        //     if (err){
+        //         console.log(err)
+        //     }
+        // })
+        res.status(200).json({message: 'out in the system',success:true })
     }catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова',success:false })
     }
 }
 
 async function registration (req, res){
     try {
-        const {name, birthday, email, password} = req.body.data
+        const {name, birthday, email, password, position} = req.body.data
         //checking whether there is a user
         const found = await Player.exists({ email });
         if (found) {
@@ -56,7 +55,7 @@ async function registration (req, res){
         const hashedPassword = await bcrypt.hash(password, 12);
         console.log(hashedPassword)
         //create new player
-        const player = await Player.create({ email, password:hashedPassword,name,birthday});
+        const player = await Player.create({ email, password:hashedPassword,name,birthday, position});
 
         // logInSession(req, player.id)
 
