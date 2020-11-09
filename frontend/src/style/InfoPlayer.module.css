@@ -1,12 +1,12 @@
-@font-face {
-    font-family: 'Montserrat';
-    src: url("./../assets/fonts/Montserrat-Black.ttf");
-    src: url("./../assets/fonts/Montserrat-ExtraLight.ttf") ;
-    src: url("./../assets/fonts/Montserrat-ExtraBold.ttf");
-    src: url("./../assets/fonts/Montserrat-Bold.ttf");
-    src: url("./../assets/fonts/Montserrat-Light.ttf");
-    src: url("./../assets/fonts/Montserrat-Medium.ttf");
-}
+/*@font-face {*/
+/*    font-family: 'Montserrat';*/
+/*    src: url("./../assets/fonts/Montserrat-Black.ttf");*/
+/*    src: url("./../assets/fonts/Montserrat-ExtraLight.ttf") ;*/
+/*    src: url("./../assets/fonts/Montserrat-ExtraBold.ttf");*/
+/*    src: url("./../assets/fonts/Montserrat-Bold.ttf");*/
+/*    src: url("./../assets/fonts/Montserrat-Light.ttf");*/
+/*    src: url("./../assets/fonts/Montserrat-Medium.ttf");*/
+/*}*/
 .wrap{
 margin-bottom: 80px;
 }
@@ -18,7 +18,7 @@ margin-bottom: 80px;
 /*header*/
 .header{
     width: 100%;
-    background-image: url("./../logo/98f6fe2a10b8384fb94c522a5da4cb19.jpg");
+    /*background-image: url("./../logo/98f6fe2a10b8384fb94c522a5da4cb19.jpg");*/
     background-repeat: no-repeat;
     background-size: cover;
     height: 665px;
