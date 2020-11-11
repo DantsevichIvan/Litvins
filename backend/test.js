@@ -16,7 +16,7 @@ before(function (done) {
         useUnifiedTopology: true
     }, function () {
         // mongoose.connection.db.dropDatabase(function () {
-        //
+        //     done()
         // })
         done()
     })
@@ -24,5 +24,6 @@ before(function (done) {
 describe('All Test', function () {
     require('./test/unit/auth.test')(app, expect)
     require('./test/unit/team.test')(app, expect)
+    require('./test/unit/matches.test')(app, expect)
 })
 

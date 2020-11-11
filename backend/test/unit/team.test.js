@@ -22,7 +22,7 @@ module.exports = function (app,expect){
         })
         describe('Get Player', function (){
             it('Success should return true', function () {
-                let userId = '123'
+                let userId = '5fa97943f9849e3bc87ff8bf'
                 app
                     .get('/team/player/'+ userId)
                     .end((err, res)=>{
