@@ -25,5 +25,7 @@ describe('All Test', function () {
     require('./test/unit/auth.test')(app, expect)
     require('./test/unit/team.test')(app, expect)
     require('./test/unit/matches.test')(app, expect)
+    require('./test/unit/news.test')(app,expect)
+    require('./test/unit/home.test')(app,expect)
 })
 
