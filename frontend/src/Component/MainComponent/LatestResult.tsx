@@ -5,16 +5,20 @@ import LastMatch from "../innerComponent/LastMatch";
 import FrameHomePage from "../innerComponent/FrameHomePage";
 import {LastMatchType} from '../../common/types';
 
-type LatestResultType = {lastMatch: LastMatchType};
+type LatestResultType = { listMatches: any };
 
-const LatestResult : FC<LatestResultType> =({lastMatch}) =>  {
+const LatestResult: FC<LatestResultType> = ({listMatches}) => {
+    console.log(listMatches)
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <FrameHomePage/>
                 <HomeTitle value={'Последние результаты'}/>
-                <LastMatch/>
-                <LastMatch/>
+                {
+                    listMatches.map((match: any) => {
+                        return <LastMatch match={match}/>
+                    })
+                }
             </div>
         </div>
     )

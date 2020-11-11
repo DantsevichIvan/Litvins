@@ -11,18 +11,16 @@ import {StateType} from '../../common/types';
 
 export default function HomePage() {
     const dispatch = useDispatch()
-  const state = useSelector((state: StateType) => state)
-  console.log('state ', state )
-  debugger
+    const state = useSelector((state: StateType) => state)
+    console.log('state ', state)
     const player = useSelector((state: StateType) => state.authPage.isAuth)
-    const lastMatch = useSelector((state: StateType) => state.homePage.lastMatch)
-    const listMatches = useSelector((state: StateType) => state.homePage.listMatches)
+    const listMatches = useSelector((state: StateType) => state.homePage.lastMatches)
     const newsList = useSelector((state: StateType) => state.homePage.newsList)
     const nextMatch = useSelector((state: StateType) => state.homePage.nextMatch)
     const statisticsPlayers = useSelector((state: StateType) => state.homePage.statisticsPlayers)
     const players = useSelector((state: StateType) => state.teamPage.players)
 
-    console.log(players)
+
     useEffect(() => {
         dispatch(getInfoHomePage())
     }, [dispatch])
@@ -34,8 +32,8 @@ export default function HomePage() {
     return (
         <div>
             <HomeHeader/>
-            <LatestResult lastMatch={lastMatch}/>
-            <NextMatches listMatches={listMatches} nextMatch={nextMatch}/>
+            <LatestResult listMatches={listMatches}/>
+            <NextMatches nextMatch={nextMatch}/>
             <News newsList={newsList}/>
             <Statistics statisticsPlayers={statisticsPlayers}/>
         </div>

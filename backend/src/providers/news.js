@@ -18,7 +18,6 @@ async function getListNews(req, res) {
         res.status(500).json({message: 'Error Server', success: false})
     }
 }
-
 async function getNews(req, res) {
     try {
         const searchNews = req.params.newsId
@@ -30,7 +29,6 @@ async function getNews(req, res) {
         res.status(500).json({message: 'Error Server', success: false})
     }
 }
-
 async function addNews(req, res) {
     try {
         const {nameNews, newsDate, textNews} = req.body.newsInfo
@@ -43,12 +41,10 @@ async function addNews(req, res) {
         res.status(500).json({message: 'Error Server', success: false})
     }
 }
-
 async function getListNewsHomePage(req, res) {
     try {
         let listNews = await News.find({})
-
-      if (!listNews.length) return {
+        if (!listNews.length) return {
             pageOfItems: [],
             message: 'Новостей нету',
             success: true
@@ -58,5 +54,6 @@ async function getListNewsHomePage(req, res) {
         res.status(500).json({message: 'Error Server', success: false})
     }
 }
+
 
 module.exports = {getListNews, getNews, addNews, getListNewsHomePage}

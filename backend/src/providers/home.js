@@ -6,7 +6,8 @@ function getStatisticsData() {
     return [
         {
             name: 'Бомбардиры',
-            listPlayers: [{name: 'Данцевич Иван', count: 25, id: 1}, {
+            listPlayers: [
+                {name: 'Данцевич Иван', count: 25, id: 1}, {
                 name: 'Cиницкий Денис',
                 count: 20,
                 id: 2
@@ -47,9 +48,8 @@ async function getInfoHomePage(req, res) {
         }
         // last news
         let newsList = await getListNewsHomePage(req, res)
-        //All info
-        let data = {statisticsData, nextMatch, newsList, lastMatches}
-        await res.status(201).json({data, success: true});
+
+        await res.status(201).json({statisticsData, nextMatch, newsList, lastMatches, success: true});
     } catch (e) {
         await res.status(500).json({message: 'Error Server, Sorry', success: true})
     }

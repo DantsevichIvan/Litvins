@@ -48,9 +48,10 @@ const initState = {
 const MatchesReducer = (state = initState, action) => {
     switch (action.type) {
         case SET_MATCHES: {
+            debugger
             return {
                 ...state,
-                matches: [...action.matches]
+                matches: [...action.data.matches]
             }
         }
         case SET_MATCH: {
@@ -123,10 +124,10 @@ const MatchesReducer = (state = initState, action) => {
     }
 }
 
-export const setMatches = (matches) => {
+export const setMatches = (data) => {
     return {
         type: SET_MATCHES,
-        matches
+        data
     }
 }
 export const setMatch = (match) => {

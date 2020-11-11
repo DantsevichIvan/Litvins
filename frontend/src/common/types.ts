@@ -26,7 +26,7 @@ type ContactPageType = {
 }
 type HomePageType = {
   lastMatch: LastMatchType
-  listMatches: Array<any>
+  lastMatches: Array<any>
   newsList: Array<any>
   statisticsPlayers: Array<any>
   infoAboutClub: { text: string, trainers: Array<string | number> }

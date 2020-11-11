@@ -51,7 +51,7 @@ export const matchesApi = {
 }
 export const homeApi = {
     getInfoHomePage() {
-        return instance.get(`homeInfo`)
+        return instance.get(`homeInfo?count=2`)
             .then(res => res.data)
     }
 }

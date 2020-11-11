@@ -51,9 +51,7 @@ module.exports = function (app,expect){
         })
         describe('Update Match', function () {
             it('Success should return true', function () {
-                // let id = '5faacd2ebd70d13bdc47674a'
-                let id = '5faacd4a1a5da21eaca3b339'
-                // let id = '5faacdd57d9495030cc2affb'
+                let id = '5fac10c49e260f19b8b2127c'
                 let result = {
                     resultTeam: 5,
                     resultOpposingTeam: 2
