@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../style/GalleryPhotosMatch.module.css";
+import styles from "./GalleryPhotosMatch.module.css";
 import AliceCarousel from "react-alice-carousel";
 import photo1 from '../../logo/853d071dfa2f869fbd2a70dbcb3a8f5e.jpg'
 import photo2 from '../../logo/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg'

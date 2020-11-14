@@ -1,11 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
-import styles from "../../style/Timer.module.css";
-import {getNextMatch} from "../../redux/MatchsReducer";
-import {useDispatch, useSelector} from "react-redux";
+import styles from "./Timer.module.css";
 
-export default function TimerComponent() {
-    const dispatch = useDispatch()
-    const nextMatch = useSelector(state => state.matchesPage.nextMatch)
+export default function TimerComponent({nextMatch}) {
     const [timerDays, setTimerDays] = useState('00')
     const [timerHours, setTimerHours] = useState('00')
     const [timerMinutes, setTimerMinutes] = useState('00')
@@ -13,19 +9,16 @@ export default function TimerComponent() {
     let internal = useRef()
 
     useEffect(() => {
-        dispatch(getNextMatch())
-    },[dispatch])
-
-    useEffect(() => {
-        start()
-    }, [nextMatch])
-    const start = () => {
-        startTimer();
-        return () => {
-            clearInterval(internal.current)
+        const start =  () => {
+            startTimer();
+            return () => {
+                clearInterval(internal.current)
+            }
         }
-    }
-    const startTimer = () => {
+        start()
+
+    }, [nextMatch])
+    function startTimer (){
         const countdownDate = new Date(nextMatch.dateTime).getTime()
         internal = setInterval(() => {
             const now = new Date().getTime();
@@ -47,7 +40,8 @@ export default function TimerComponent() {
                 setTimerSeconds(seconds)
             }
         }, 1000)
-    };
+    }
+
     return (
         <section>
             <span className={styles.number}>{timerDays}</span>

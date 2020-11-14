@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import styles from "../../style/Paginator.module.css";
+import styles from "./Paginator.module.css";
 import {NavLink} from "react-router-dom";
 import cn from "classnames"
 

@@ -1,4 +1,4 @@
-import styles from "../../style/FormsComponent.module.css";
+import styles from "./FormsComponent.module.css";
 import {Field} from "redux-form";
 import {required} from "./validation";
 import React from "react";

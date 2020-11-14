@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../../style/SliderNewsContent.module.css";
+import styles from "./SliderNewsContent.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight ,faCalendarAlt,faUser, faListUl} from "@fortawesome/free-solid-svg-icons";
 import AliceCarousel from "react-alice-carousel";

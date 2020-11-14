@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../style/Loading.module.css'
+import styles from './Loading.module.css'
 import {faFutbol} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 

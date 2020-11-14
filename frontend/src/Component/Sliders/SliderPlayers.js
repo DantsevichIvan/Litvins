@@ -1,11 +1,8 @@
 import React from 'react';
-import styles from '../../style/SliderPlayers.module.css'
+import styles from './SliderPlayers.module.css'
 import AliceCarousel from 'react-alice-carousel'
 import "react-alice-carousel/lib/alice-carousel.css"
-import Player from "../innerComponent/Player";
-import RightCircleOutlined from "@ant-design/icons/lib/icons/RightCircleOutlined";
-import LeftCircleOutlined from "@ant-design/icons/lib/icons/LeftCircleOutlined";
-import RightOutlined from "@ant-design/icons/lib/icons/RightOutlined";
+import Player from "../TeamPage/Player/Player";
 
 
 export default class SliderPlayers extends React.PureComponent {
