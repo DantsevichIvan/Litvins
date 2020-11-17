@@ -83,13 +83,11 @@ export const newsApi = {
 }
 export const imageApi = {
     uploadFile(fd) {
-        debugger
-        return instance.post(`/api/image`, fd)
-            .then(res => {
-                console.log(res)
-            })
+        return instance.post(`/image/`, {fd})
+            .then(res => res.data)
     }
 }
+
 export const contactApi = {
     getContacts() {
         return instance.get(`contact`)

@@ -4,7 +4,15 @@ import {NavLink} from "react-router-dom";
 import cn from "classnames"
 
 
-export default function Paginator({currentPage, pageSize, totalPlayersCount, portionSize=4,onDispatchMethod}) {
+interface PaginatorProps{
+    currentPage:number
+    pageSize:number
+    totalPlayersCount:number
+    portionSize:number
+    onDispatchMethod:(currentPage:number ) =>void
+}
+
+export default function Paginator({currentPage, pageSize, totalPlayersCount, portionSize=4,onDispatchMethod}:PaginatorProps) {
     const [portionNumber, setPortionNumber] = useState(1)
     let pagesCount = Math.ceil(totalPlayersCount / pageSize)
     let portionCount = Math.ceil(pagesCount / portionSize)
@@ -12,7 +20,7 @@ export default function Paginator({currentPage, pageSize, totalPlayersCount, por
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    const onPageChanged = (pageNumber) =>{
+    const onPageChanged = (pageNumber:number) =>{
         setPortionNumber(()=>{
             let newCurrentPage
             if(pageNumber>currentPage){
@@ -22,10 +30,10 @@ export default function Paginator({currentPage, pageSize, totalPlayersCount, por
             }
             return newCurrentPage
         })
-        onDispatchMethod(pageNumber,pageSize)
+        onDispatchMethod(currentPage)
     }
-    const onPageChangedNextPrev = (value) =>{
-        setPortionNumber(()=>{
+    const onPageChangedNextPrev = (value:string) =>{
+        setPortionNumber(():any => {
             if(value === 'Next'){
                 setPortionNumber(portionNumber+1)
                 onDispatchMethod(currentPage+1)

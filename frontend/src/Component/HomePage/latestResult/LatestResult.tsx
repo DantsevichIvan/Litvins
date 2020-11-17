@@ -1,11 +1,12 @@
 import React, {FC} from 'react';
 import styles from './LatestResult.module.css'
-import HomeTitle from "../HomeTitle";
+import HomeTitle from "../additionalComponent/HomeTitle";
 import LastMatch from "./LastMatch";
-import FrameHomePage from "../FrameHomePage";
-// import {LastMatchType} from '../../../common/types';
+import FrameHomePage from "../additionalComponent/FrameHomePage";
+import {LastMatchType} from '../../../common/types';
 
-type LatestResultType = { listMatches: any };
+
+type LatestResultType = { listMatches: Array<LastMatchType>};
 
 const LatestResult: FC<LatestResultType> = ({listMatches}) => {
     return (

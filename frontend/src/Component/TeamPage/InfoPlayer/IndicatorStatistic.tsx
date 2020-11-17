@@ -1,8 +1,11 @@
 import React from "react";
 import styles from './IndicatorStatistic.module.css'
 
+interface Props{
 
-export function IndicatorStatistic({style}) {
+}
+
+export function IndicatorStatistic({}) {
     return <div className={styles.skill}>
         <p className={styles.bar_title}>
             Скорость

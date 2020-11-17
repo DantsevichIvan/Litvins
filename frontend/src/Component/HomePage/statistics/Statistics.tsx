@@ -1,23 +1,26 @@
-import React from 'react';
+import React, {FC} from 'react';
 import style from './Statistics.module.css'
 import StatisticsPlayer from "./StatisticsPlayer";
 import StatisticsTitleIcon from "./StatisticsTitleIcon";
-import HomeTitle from "../HomeTitle";
-import LinkOtherPage from "../LinkOtherPage";
+import HomeTitle from "../additionalComponent/HomeTitle";
+import LinkOtherPage from "../additionalComponent/LinkOtherPage";
+import {StatisticsListType,StatisticsPlayerType} from "../../../common/types";
 
 
-export default function Statistics({statisticsPlayers}:any) {
+type StatisticsType = {statisticsPlayers: Array<StatisticsListType> }
+
+const Statistics:FC<StatisticsType> = ({statisticsPlayers}) => {
     return (
         <div className={style.wrapper}>
             <div className={style.content}>
                 <HomeTitle value={'Статистика'}/>
                 <div className={style.container}>
-                    {statisticsPlayers.map((categories: any) => {
+                    {statisticsPlayers.map((categories: StatisticsListType) => {
                         return (
                             <div className={style.item} key={categories.id}>
                                 <StatisticsTitleIcon title={categories.name}/>
                                 {
-                                    categories.listPlayers.map((player: any) => {
+                                    categories.listPlayers.map((player: StatisticsPlayerType) => {
                                         return <StatisticsPlayer player={player} key={player.id}/>
                                     })
                                 }
@@ -30,3 +33,5 @@ export default function Statistics({statisticsPlayers}:any) {
         </div>
     )
 }
+
+export default Statistics

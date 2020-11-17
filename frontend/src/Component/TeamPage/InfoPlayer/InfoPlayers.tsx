@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from "react";
 import styles from './InfoPlayer.module.css'
-// import avatar from "../../logo/f401649c954a6ca111acf083eac616cf.jpg"
+import avatar from "./../../../logo/f401649c954a6ca111acf083eac616cf.jpg"
 import SliderPlayers from "../../Sliders/SliderPlayers";
 import {useDispatch, useSelector} from "react-redux";
 import {getPlayer, getPlayers} from "../../../action/teamActions";
@@ -8,12 +8,13 @@ import {IndicatorStatistic} from "./IndicatorStatistic";
 import {ContainerInfo} from "./ContainerInfo";
 import {Progress} from "antd";
 import moment from "moment";
+import {StateType} from '../../../common/types'
 
 
-export default function InfoPlayer(props) {
+export default function InfoPlayer(props:any){
     const dispatch = useDispatch();
-    const player = useSelector(state => state.teamPage.player)
-    const players = useSelector(state => state.teamPage.players)
+    const player = useSelector((state:StateType) => state.teamPage.player)
+    const players = useSelector((state:StateType) => state.teamPage.players)
 
     const getInfoPlayer = useCallback(() => {
         try {
@@ -27,9 +28,9 @@ export default function InfoPlayer(props) {
         getInfoPlayer()
         dispatch(getPlayers(1, 15))
     }, [dispatch,getInfoPlayer])
+
     return (
         <div className={styles.wrap}>
-
             <div className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.headerContainer}>
@@ -45,11 +46,8 @@ export default function InfoPlayer(props) {
                                 <span>30</span>
                             </div>
                         </div>
-                        {/*<div className={styles.avatar}>*/}
-                        {/*    <img src={avatar} alt=""/>*/}
-                        {/*</div>*/}
                         <div className={styles.avatar}>
-                            avatar
+                            <img src={avatar} alt=""/>
                         </div>
                     </div>
                     <div className={styles.infoPlayer}>
@@ -60,7 +58,6 @@ export default function InfoPlayer(props) {
                     </div>
                 </div>
             </div>
-
             <div className={styles.statistic}>
                 <div className={styles.container}>
                     <div className={styles.statisticContainer}>
@@ -82,7 +79,6 @@ export default function InfoPlayer(props) {
                     </div>
                 </div>
             </div>
-
             <div className={styles.sliderContainer}>
                 <div className={styles.container}>
                     <SliderPlayers players={players} title={'Другие игроки'}/>

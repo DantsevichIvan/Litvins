@@ -1,99 +1,37 @@
-import {Field, reduxForm} from "redux-form";
-import {ADatePicker, AInput, AInputTextArea} from "../../FormsControls/FormsControls";
-import {Button, Upload} from "antd";
 import {useDispatch} from "react-redux";
 import {successMessages} from "../../FormsControls/AuxiliaryFunction";
 import styles from "./AddNewsForm.css";
-import React from "react";
-import moment from "moment";
-import {required} from "../../FormsControls/validation";
-import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
+import React, {useState} from "react";
 import {addNewsThunk, fileUploadHandler} from "../../../action/newsActions";
+import {AddNewsForm} from "./NewsForm";
 
-let NewsForm = ({handleSubmit ,fileUpload}) => {
 
-    const props = {
-        listType: 'picture',
-        accept: 'image/*',
-
-        onChange({file}) {
-            console.log(file)
-            // url: file.
-            // if (file.status !== 'uploading') {
-            //     console.log(file, fileList);
-            // }
-            // if (file.status === 'done') {
-            //     successMessages(`${file.name} file uploaded successfully`)
-            //     console.log(file);
-            // }else if(file.status === 'error'){
-            //     successMessagesError(`${file.name} file upload failed.`)
-            // }
-        },
-        customRequest({file}) {
-            fileUpload(file)
-        }
-    };
-    return (
-        <form onSubmit={handleSubmit}>
-            <Field
-                name="nameNews"
-                component={AInput}
-                placeholder={'Название новости'}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
-            />
-            <Field
-                name="newsDate"
-                component={ADatePicker}
-                placeholder={'News Day'}
-                hasFeedback
-                defaultData={moment().format('DD/MM/YYYY')}
-                validate={[required]}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
-            />
-            <Field
-                name="textNews"
-                component={AInputTextArea}
-                placeholder={'Введите текст новости'}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
-            />
-
-            <Upload {...props} name='file' onChange={props.onChange} customRequest={props.customRequest}>
-                <Button>
-                    <UploadOutlined/> Upload
-                </Button>
-            </Upload>
-
-            <Button type="primary" htmlType="submit" style={{marginRight: "10px"}} onClick={handleSubmit}>
-                Sumbit
-            </Button>
-        </form>
-    )
-};
-const AddNewsForm = reduxForm({
-    form: 'newsForm'
-})(NewsForm);
 export default function AddNewNews({openCloseModalWindow}) {
+    const [fileList, setFileList] = useState([])
+    const [previewImage, setPreviewImage] = useState('')
     const dispatch = useDispatch()
-   async function fileUpload (file){
-        const fd = new FormData()
-        await fd.append('image',file,file.name)
-       debugger
-       console.log(fd)
-        dispatch(fileUploadHandler(fd))
-    }
-    const onSubmit = (formData) => {
-        dispatch(addNewsThunk(formData))
+
+    const onSubmit = (fd) => {
+        let formData = new FormData();
+        formData.append("photo", fileList[0].originFileObj);
+        debugger
+        dispatch(addNewsThunk(fd))
+        // dispatch(fileUploadHandler(formData))
         successMessages('Новость добавлена')
         openCloseModalWindow()
     }
+
     return (
         <div className={styles.wrap}>
             <div className={styles.container}>
                 <button onClick={openCloseModalWindow}>Close</button>
-                <AddNewsForm onSubmit={onSubmit} fileUpload={fileUpload}/>
+                <AddNewsForm
+                    onSubmit={onSubmit}
+                    fileList={fileList}
+                    setFileList={setFileList}
+                    previewImage={previewImage}
+                    setPreviewImage={setPreviewImage}
+                />
             </div>
         </div>
     )

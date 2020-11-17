@@ -1,4 +1,4 @@
-const {getPaginator} = require("./middleware");
+const {getPaginator} = require("../services/middleware");
 const News = require('../models/News')
 const moment = require('moment')
 

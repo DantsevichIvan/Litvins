@@ -5,7 +5,7 @@ import News from "./news/News";
 import Statistics from "./statistics/Statistics";
 import {useDispatch, useSelector} from "react-redux";
 import {getInfoHomePage} from "../../action/homeActions";
-import HomeHeader from "./HomeHeader";
+import HomeHeader from "./additionalComponent/HomeHeader";
 import {StateType} from '../../common/types';
 
 export default function HomePage() {

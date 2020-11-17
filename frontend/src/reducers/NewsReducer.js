@@ -22,7 +22,7 @@ const initState = {
 const NewsReducer = (state=initState, action) => {
     switch (action.type) {
         case SET_LIST_NEWS: {
-            // debugger
+            debugger
             return{
                 ...state,
                 newsList:[...action.data],

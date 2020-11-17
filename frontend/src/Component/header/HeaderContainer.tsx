@@ -1,10 +1,22 @@
 import React from 'react';
 import styles from "./HeaderContainer.module.css";
 import TimeInfoForNextMatch from "../MatchPage/InfoForNextMatch/TimeInfoForNextMatch";
-import TitleHeader from "./TitleHeader.tsx";
+import TitleHeader from "./TitleHeader";
 import NavigationHeader from "./NavigationHeader";
 
-export default function HeaderContainer({nextMatch={}, activeLink, link, childrenLink = null, header,title}) {
+interface HeaderContainerProps {
+    nextMatch: {
+        value: null|boolean
+    }
+    activeLink:string
+    link:string
+    childrenLink:null| boolean
+    header: boolean
+    title:string
+}
+
+
+export default function HeaderContainer({nextMatch={value:null}, activeLink, link, childrenLink = null, header,title}:HeaderContainerProps) {
     return (
         <div className={styles.headerContainer}>
             <TitleHeader nextMatch={nextMatch} title={title}/>

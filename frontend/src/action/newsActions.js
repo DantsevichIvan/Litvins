@@ -23,7 +23,6 @@ export const addNewsThunk = (newsInfo) => async (dispatch) =>{
     dispatch(setListNews(data))
 }
 export const fileUploadHandler = (fd) => async (dispatch) =>{
-    debugger
     const data = await imageApi.uploadFile(fd)
     console.log(data)
 }

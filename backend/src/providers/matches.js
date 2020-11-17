@@ -1,6 +1,6 @@
 const Match = require('../models/Match')
-const {getPaginator} = require("./middleware");
-const {combineDateAndTime} = require("./middleware");
+const {getPaginator} = require("../services/middleware");
+const {combineDateAndTime} = require("../services/middleware");
 
 async function getMatches(req, res) {
     try {

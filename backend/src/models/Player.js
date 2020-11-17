@@ -4,6 +4,7 @@ const playerSchema = new Schema({
     name: {type: String},
     lastName: {type: String},
     birthday: {type: Date},
+    numberPlayer:{type:Number},
     email: {type: String},
     password: {type: String},
     position: {type: String},

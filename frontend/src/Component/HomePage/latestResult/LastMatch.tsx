@@ -1,9 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from './LastMatch.module.css'
 import {NavLink} from "react-router-dom";
 import moment from "moment";
+import {LastMatchType} from "../../../common/types";
 
-export default function LastMatch({match}) {
+type LatestResultMatchType = { match: LastMatchType }
+
+const LastMatch: FC<LatestResultMatchType> = ({match}) => {
     return (
         <div className={styles.container}>
             <div className={styles.infoAboutMatch}>
@@ -34,3 +37,4 @@ export default function LastMatch({match}) {
         </div>
     )
 }
+export default LastMatch

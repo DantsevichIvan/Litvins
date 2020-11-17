@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import styles from './NextMatchs.module.css'
 import moment from "moment";
 import TimerComponent from "../../innerComponent/TimerComponent";
-import HomeTitle from "../HomeTitle";
-import FrameHomePage from "../FrameHomePage";
+import HomeTitle from "../additionalComponent/HomeTitle";
+import FrameHomePage from "../additionalComponent/FrameHomePage";
 import {MatchType} from '../../../common/types';
 
 type NextMatches = {

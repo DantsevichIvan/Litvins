@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const {upload} = require("./upload");
 
 module.exports = function (app) {
     app.use(bodyParser.json())
@@ -19,8 +20,8 @@ module.exports = function (app) {
     app.use('/list-news', require('./controllers/news.routes'));
     app.use('/contact', require('./controllers/contact.routes'));
     app.use('/auth', require('./controllers/auth.router'));
-    app.use('/api/image', require('./controllers/image.router'));
-    app.use('/statistic', require('./controllers/statistic.router'));
+    app.use('/image', upload.single('photo'),require('./controllers/image.router'));
+    app.use('/statistic',require('./controllers/statistic.router'));
 }
 
 

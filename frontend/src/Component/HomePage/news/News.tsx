@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './news.module.css';
 import ArticleContainer from "./ArticleContainer";
-import HomeTitle from "../HomeTitle";
-import LinkOtherPage from "../LinkOtherPage";
+import HomeTitle from "../additionalComponent/HomeTitle";
+import LinkOtherPage from "../additionalComponent/LinkOtherPage";
+import {NewsType} from "../../../common/types"
 
-export default function News({newsList}: any) {
+type NewsResultType = { newsList: Array<NewsType> }
+
+const News: FC<NewsResultType> = ({newsList}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
@@ -12,7 +15,7 @@ export default function News({newsList}: any) {
                 <div className={styles.wrapper__container}>
                     <div className={styles.wrapper__container__center}>
                         {
-                            newsList.map((news: any)=>{
+                            newsList.map((news: any) => {
                                 return <ArticleContainer news={news} key={news._id}/>
                             })
                         }
@@ -23,3 +26,4 @@ export default function News({newsList}: any) {
         </div>
     )
 }
+export default News
