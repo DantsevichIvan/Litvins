@@ -1,13 +1,13 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import {reducer as formReducer} from 'redux-form'
 import thunkMiddleware from '../node_modules/redux-thunk';
-import TeamReducer from "./redux/TeamReducer";
-import MatchesReducer from "./redux/MatchsReducer";
-import HomeReducer from "./redux/HomeReducer";
-import ClubReducer from "./redux/ClubReducer";
-import NewsReducer from "./redux/NewsReducer";
-import ContactReducer from "./redux/ContactReducer";
-import AuthReducer from "./redux/AuthReducer";
+import TeamReducer from "./reducers/TeamReducer";
+import MatchesReducer from "./reducers/MatchsReducer";
+import HomeReducer from "./reducers/HomeReducer";
+import ClubReducer from "./reducers/ClubReducer";
+import NewsReducer from "./reducers/NewsReducer";
+import ContactReducer from "./reducers/ContactReducer";
+import AuthReducer from "./reducers/AuthReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

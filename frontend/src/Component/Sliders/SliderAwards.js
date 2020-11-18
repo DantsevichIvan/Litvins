@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../style/SliderAwards.module.css'
+import styles from './SliderAwards.module.css'
 import AliceCarousel from 'react-alice-carousel'
 import "react-alice-carousel/lib/alice-carousel.css";
 import 'react-alice-carousel/lib/alice-carousel.css'

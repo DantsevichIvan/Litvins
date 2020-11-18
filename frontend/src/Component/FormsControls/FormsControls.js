@@ -1,4 +1,4 @@
-import styles from "../../style/InnerComponent.module.css";
+import styles from "./InnerComponent.module.css";
 import React from "react";
 import cn from "classnames";
 import {Form, Radio, TimePicker,DatePicker,Input, InputNumber} from 'antd';

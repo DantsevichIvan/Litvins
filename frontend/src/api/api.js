@@ -10,8 +10,8 @@ export const teamApi = {
         return instance.get(`team?page=${currentPage}&count=${pageSize}`)
             .then(res => res.data)
     },
-    putFilterPlayers(title){
-        return instance.put(`team?filter=${title}`, {})
+    putFilterPlayers(filter){
+        return instance.get(`team/position=${filter}`)
             .then(res => res.data)
     },
     getPlayer(userId) {
@@ -51,7 +51,7 @@ export const matchesApi = {
 }
 export const homeApi = {
     getInfoHomePage() {
-        return instance.get(`homeInfo`)
+        return instance.get(`homeInfo?count=2`)
             .then(res => res.data)
     }
 }
@@ -83,13 +83,11 @@ export const newsApi = {
 }
 export const imageApi = {
     uploadFile(fd) {
-        debugger
-        return instance.post(`/api/image`, fd)
-            .then(res => {
-                console.log(res)
-            })
+        return instance.post(`/image/`, {fd})
+            .then(res => res.data)
     }
 }
+
 export const contactApi = {
     getContacts() {
         return instance.get(`contact`)
