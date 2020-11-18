@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => (
+const AnyReactComponent = ({ text } : any) => (
     <div style={{
         color: 'white',
         background: 'grey',
@@ -17,7 +17,7 @@ const AnyReactComponent = ({ text }) => (
     </div>
 );
 
-class SimpleMap extends React.Component {
+class SimpleMap extends React.Component<any> {
     static defaultProps = {
         center: {
             lat: 53.9323123,
@@ -47,3 +47,5 @@ class SimpleMap extends React.Component {
 }
 
 export default SimpleMap;
+
+// : any 2

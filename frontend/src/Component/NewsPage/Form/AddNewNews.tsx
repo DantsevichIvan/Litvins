@@ -1,17 +1,17 @@
 import {useDispatch} from "react-redux";
 import {successMessages} from "../../FormsControls/AuxiliaryFunction";
-import styles from "./AddNewsForm.css";
+import styles from "./AddNewsForm.module.css";
 import React, {useState} from "react";
 import {addNewsThunk, fileUploadHandler} from "../../../action/newsActions";
 import {AddNewsForm} from "./NewsForm";
 
 
-export default function AddNewNews({openCloseModalWindow}) {
-    const [fileList, setFileList] = useState([])
+export default function AddNewNews({openCloseModalWindow} : any) {
+    const [fileList, setFileList] = useState<Array<any>>([])
     const [previewImage, setPreviewImage] = useState('')
     const dispatch = useDispatch()
 
-    const onSubmit = (fd) => {
+    const onSubmit = (fd : any) => {
         let formData = new FormData();
         formData.append("photo", fileList[0].originFileObj);
         debugger
@@ -36,3 +36,5 @@ export default function AddNewNews({openCloseModalWindow}) {
         </div>
     )
 }
+
+// : any 2

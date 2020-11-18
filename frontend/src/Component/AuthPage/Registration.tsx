@@ -13,7 +13,7 @@ import moment from 'moment';
 
 export const ARangePicker = makeField(DatePicker);
 
-const RegistrationForm = ({handleSubmit}) => {
+const RegistrationForm = ({handleSubmit}: any) => {
     return (
         <form action="" className={styles.form} onSubmit={handleSubmit}>
             <FormSection name={'name'}>
@@ -51,14 +51,15 @@ const RegistrationForm = ({handleSubmit}) => {
 
                     <Input.Password
                         placeholder="Придумайте пароль"
-                        name='password' label='Пароль'
-                        validate={[required]}
+                        name='password'
+                        // label='Пароль'
+                        // validate={[required]}
                         className={styles.fieldPassword}/>
                     <Input.Password
                         placeholder="Подтверждение пароля"
                         name='repeatPassword'
-                        label='Подтверждение пароля'
-                        validate={[required]}
+                        // label='Подтверждение пароля'
+                        // validate={[required]}
                         className={styles.fieldPassword}
                     />
                 </div>
@@ -75,9 +76,9 @@ const RegistrationReduxForm = reduxForm({
 
 export default function Registration() {
     // const player = useSelector(state => state.authPage.playerId)
-    const isAuth = useSelector(state => state.authPage.isAuth)//true or false
+    const isAuth = useSelector((state: any) => state.authPage.isAuth)//true or false
     // const dispatch = useDispatch()
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: any) => {
         // console.log(formData)
         console.log(moment(formData.birthday.birthdayDay._d).format('MM/DD/YYYY'))
         // dispatch(registration(formData))
@@ -95,3 +96,16 @@ export default function Registration() {
         </div>
     )
 }
+
+// : any 3
+// ***
+// переписать формирок и добавить закомментированные параметры
+
+// label='Пароль'
+// validate={[required]}
+
+// label='Подтверждение пароля'
+// validate={[required]}
+
+// ***
+

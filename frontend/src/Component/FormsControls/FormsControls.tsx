@@ -16,7 +16,7 @@ const formItemLayout = {
         sm: { span: 50 }
     }
 };
-export const makeField = Component => ({ input, meta,children,hasFeedback, label, ...rest }) => {
+export const makeField = (Component: any) => ({ input, meta,children,hasFeedback, label, ...rest }: any) => {
     const hasError = meta.touched && meta.invalid;
     return (
         <FormItem
@@ -39,7 +39,7 @@ export const makeField = Component => ({ input, meta,children,hasFeedback, label
         </FormItem>
     );
 };
-export const inputField = Component => ({ input, meta,children,hasFeedback, label, defaultValue }) => {
+export const inputField = (Component : any )=> ({ input, meta,children,hasFeedback, label, defaultValue }: any) => {
     const hasError = meta.touched && meta.invalid;
     return (
         <FormItem
@@ -68,7 +68,7 @@ export const AInputNumber = inputField(InputNumber);
 export const AInputTextArea = inputField(TextArea);
 
 
-export const renderInput = ({input, label, type,placeholder,defaultValue, meta: {touched, error, warning}, ...props}) => (
+export const renderInput = ({input, label, type,placeholder,defaultValue, meta: {touched, error, warning}, ...props} : any) => (
     <div className={styles.fieldInput}>
         <label>{label}</label>
         <div>
@@ -81,7 +81,7 @@ export const renderInput = ({input, label, type,placeholder,defaultValue, meta: 
 )
 
 
-export const renderFieldStatistic = ({ input, label,placeholder, type, meta: { touched, error } }) => (
+export const renderFieldStatistic = ({ input, label,placeholder, type, meta: { touched, error } }: any) => (
     <div className={styles.fieldStatistic}>
         <label>{label}</label>
         <div>
@@ -89,3 +89,5 @@ export const renderFieldStatistic = ({ input, label,placeholder, type, meta: { t
             {touched && error && <span>{error}</span>}
         </div>
     </div>)
+
+// : any 6

@@ -4,13 +4,13 @@ import {ADatePicker, AInput, AInputTextArea} from "../../FormsControls/FormsCont
 import moment from "moment";
 import {required} from "../../FormsControls/validation";
 import {Button, Upload} from "antd";
-import React from "react";
+import React, {FC} from "react";
 
-const NewsForm = ({handleSubmit, setFileList, fileList}) => {
-    const handlePreview = file => {
+const NewsForm = ({handleSubmit, setFileList, fileList} : any) => {
+    const handlePreview = (file : any) => {
         setFileList([...fileList, file.thumbUrl])
     };
-    const handleUpload = ({fileList}) => {
+    const handleUpload = ({fileList} : any) => {
         setFileList([...fileList])
     };
     const uploadButton = (
@@ -25,8 +25,8 @@ const NewsForm = ({handleSubmit, setFileList, fileList}) => {
                 name="nameNews"
                 component={AInput}
                 placeholder={'Название новости'}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
+                onFocus={(e : any)=> e.preventDefault()}
+                onBlur={(e : any) => e.preventDefault()}
             />
             <Field
                 name="newsDate"
@@ -35,15 +35,15 @@ const NewsForm = ({handleSubmit, setFileList, fileList}) => {
                 hasFeedback
                 defaultData={moment().format('DD/MM/YYYY')}
                 validate={[required]}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
+                onFocus={(e : any) => e.preventDefault()}
+                onBlur={(e : any) => e.preventDefault()}
             />
             <Field
                 name="textNews"
                 component={AInputTextArea}
                 placeholder={'Введите текст новости'}
-                onFocus={e => e.preventDefault()}
-                onBlur={e => e.preventDefault()}
+                onFocus={(e : any) => e.preventDefault()}
+                onBlur={(e : any) => e.preventDefault()}
             />
 
             {/*<Upload*/}
@@ -63,6 +63,10 @@ const NewsForm = ({handleSubmit, setFileList, fileList}) => {
     )
 };
 
-export const AddNewsForm = reduxForm({
+export const AddNewsForm : any = reduxForm({
     form: 'newsForm'
 })(NewsForm);
+
+
+// : any 10
+// переписать AddNewsForm на формит и зитипизировать

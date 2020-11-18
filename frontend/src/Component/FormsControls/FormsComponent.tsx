@@ -5,8 +5,8 @@ import React from "react";
 import {renderFieldStatistic, renderInput} from "./FormsControls";
 
 
-const optionsPosition = ['Goalkeepers', 'Defenders', 'Midfielders', 'Forward']
-const optionsNumber = []
+const optionsPosition: Array<string> = ['Goalkeepers', 'Defenders', 'Midfielders', 'Forward']
+const optionsNumber: Array<number> = []
 for (let i = 1; i <= 99; i++) {
     optionsNumber.push(i)
 }
@@ -25,7 +25,7 @@ export const InfoAbout = () => {
                 <span>Позиция</span>
                 <Field name="position" component='select' validate={[required]}>
                     <option className={styles.title}>{'Выберите'}</option>
-                    {optionsPosition.map((option) => {
+                    {optionsPosition.map((option : string) => {
                         return <option className={styles.option} value={option} key={option}>{option}</option>
                     })}
                 </Field>
@@ -34,7 +34,7 @@ export const InfoAbout = () => {
                 <span>Номер</span>
                 <Field name="numberPlayer" component='select' validate={[required]}>
                     <option className={styles.title}>{'Выберите'}</option>
-                    {optionsNumber.map((option) => {
+                    {optionsNumber.map((option: number) => {
                         return <option className={styles.option} value={option} key={option}>{option}</option>
                     })}
                 </Field>

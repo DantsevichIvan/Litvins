@@ -8,7 +8,7 @@ import {email, required} from "../FormsControls/validation";
 import {renderInput} from "../FormsControls/FormsControls";
 
 
-const LoginForm = (props) => {
+const LoginForm = (props: any) => {
     return (
         <form action="" className={styles.form} onSubmit={props.handleSubmit}>
             <Field name='email' component={renderInput} placeholder='ivaninanov@mail.ru' type='text' label='Почта' validate={[required, email]}/>
@@ -23,7 +23,7 @@ const LoginReduxForm = reduxForm({
 
 export default function Login() {
     const dispatch = useDispatch()
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: any) => {
         dispatch(logIn(formData.login, formData.password))
     }
     return (
@@ -37,3 +37,5 @@ export default function Login() {
         </div>
     )
 }
+
+// : any 2

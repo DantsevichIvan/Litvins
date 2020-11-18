@@ -3,7 +3,7 @@ import {AInputNumber} from "../../FormsControls/FormsControls";
 import {Button} from "antd";
 import React from "react";
 
-let ResultMatchForm = ({handleSubmit, playedMatch}) => {
+let ResultMatchForm = ({handleSubmit, playedMatch} : any) => {
     return (
         <form onSubmit={handleSubmit}>
             {playedMatch && playedMatch.game === 'home' ?
@@ -14,8 +14,8 @@ let ResultMatchForm = ({handleSubmit, playedMatch}) => {
                             name="resultTeam"
                             component={AInputNumber}
                             defaultValue={'0'}
-                            onFocus={e => e.preventDefault()}
-                            onBlur={e => e.preventDefault()}
+                            onFocus={(e : any) => e.preventDefault()}
+                            onBlur={(e : any) => e.preventDefault()}
                         />
                     </div>
                     <div>
@@ -24,8 +24,8 @@ let ResultMatchForm = ({handleSubmit, playedMatch}) => {
                             name="resultOpposingTeam"
                             component={AInputNumber}
                             defaultValue={'0'}
-                            onFocus={e => e.preventDefault()}
-                            onBlur={e => e.preventDefault()}
+                            onFocus={(e : any) => e.preventDefault()}
+                            onBlur={(e : any) => e.preventDefault()}
                         />
                     </div>
                 </div>: null
@@ -61,6 +61,8 @@ let ResultMatchForm = ({handleSubmit, playedMatch}) => {
 export const AddResultMatchForm = reduxForm({
     form: 'resultForm'
 })(ResultMatchForm)
+
+// : any 5
 
 
 
