@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./HeaderContainer.module.css";
 import {NavLink} from "react-router-dom";
 
-export default function NavigationHeader ({activeLink,link,childrenLink}) {
+
+interface  NavigationHeaderProps{
+    activeLink?:string
+    link?:string
+    childrenLink?:string
+}
+
+export default function NavigationHeader ({activeLink,link,childrenLink}:NavigationHeaderProps) {
 return(
     <div className={styles.breadcrumb}>
         <div className={styles.breadcrumb__link}>
@@ -11,13 +18,13 @@ return(
             </NavLink>
         </div>
         <div className={styles.breadcrumb__other}>
-            {childrenLink === null ?
+            {link ?
                 <span className={styles.active}>{activeLink}</span>
                 : <NavLink to={`/${link}`} className={styles.activeLink}><span>{activeLink}</span></NavLink>
             }
         </div>
         {
-            childrenLink !== null ?
+            !!link ?
                 <div className={styles.breadcrumb__other}>
                     <span className={styles.active}>{childrenLink}</span>
                 </div>

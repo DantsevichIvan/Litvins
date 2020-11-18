@@ -1,15 +1,20 @@
 import React, {useEffect, useRef, useState} from "react";
 import styles from "./Timer.module.css";
+import {NextMatchType} from '../../common/types'
 
-export default function TimerComponent({nextMatch}) {
-    const [timerDays, setTimerDays] = useState('00')
-    const [timerHours, setTimerHours] = useState('00')
-    const [timerMinutes, setTimerMinutes] = useState('00')
-    const [timerSeconds, setTimerSeconds] = useState('00')
+interface TimerComponentProps {
+    nextMatch: NextMatchType
+}
+
+export default function TimerComponent({nextMatch}: TimerComponentProps) {
+    const [timerDays, setTimerDays] = useState<string|number>('00')
+    const [timerHours, setTimerHours] = useState<string|number>('00')
+    const [timerMinutes, setTimerMinutes] = useState<string|number>('00')
+    const [timerSeconds, setTimerSeconds] = useState<string|number>('00')
     let internal = useRef()
 
     useEffect(() => {
-        const start =  () => {
+        const start = () => {
             startTimer();
             return () => {
                 clearInterval(internal.current)
@@ -18,9 +23,10 @@ export default function TimerComponent({nextMatch}) {
         start()
 
     }, [nextMatch])
-    function startTimer (){
+
+    function startTimer() {
         const countdownDate = new Date(nextMatch.dateTime).getTime()
-        internal = setInterval(() => {
+        let internal = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
 
@@ -31,7 +37,7 @@ export default function TimerComponent({nextMatch}) {
 
             if (distance < 0) {
                 //stop our timer
-                clearInterval(internal.current)
+                clearInterval(internal)
 
             } else {
                 setTimerDays(days)

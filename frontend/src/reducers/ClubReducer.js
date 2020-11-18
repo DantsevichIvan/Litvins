@@ -3,7 +3,8 @@ export const SET_INFO_YEAR = 'RECENTCOMMENTS::SET_INFO_YEAR'
 
 const initState = {
     infoForClub: null,
-    infoYear:[]
+    infoYear:[],
+    listYears: []
 }
 
 const ClubReducer = (state=initState, action)=>{
@@ -11,13 +12,13 @@ const ClubReducer = (state=initState, action)=>{
         case SET_INFO_CLUB: {
             return{
                 ...state,
-                infoForClub: action.data
+                listYears: [...action.data.newArr]
             }
         }
         case SET_INFO_YEAR: {
             return{
                 ...state,
-                infoForClub: action.data
+                listYears: [...action.data.newArr]
             }
         }
         default:{

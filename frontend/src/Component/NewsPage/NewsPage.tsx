@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import HeaderContainer from "../header/HeaderContainer";
+import React, {FC, useEffect, useState} from 'react';
+import HeaderContainer from "../Header/HeaderContainer";
 import styles from './NewsPage.module.css'
 import NewsContent from "./NewsContent";
 import PaginatorNews from "../innerComponent/Paginator";
@@ -8,8 +8,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {getListNews} from "../../action/newsActions";
 import Modal from "react-modal";
 import AddNewNews from "./Form/AddNewNews";
+import {NewsPageType,StateType,NewsInfoType} from '../../common/types'
 
-const customStyles = {
+interface customStylesProps {
+    content:{}
+}
+const customStyles:customStylesProps = {
     content: {
         width: '700px',
         height: '300px',
@@ -21,30 +25,32 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         zIndex: 9999,
         position: 'relative',
-        opacity:1
+        opacity: 1
     }
 };
-export default function NewsPage () {
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const dispatch =useDispatch()
-    const listNews = useSelector(state => state.newsPage.newsList)
-    const currentPage = useSelector(state => state.newsPage.currentPage)
-    const pageSize = useSelector(state => state.newsPage.pageSize)
-    const totalPlayersCount = useSelector(state => state.newsPage.totalPlayersCount)
-    const message = useSelector(state => state.newsPage.message)
 
 
-    useEffect(()=>{
-        const getAllNews = () =>{
-            dispatch(getListNews(1,9))
+const NewsPage:FC<NewsPageType> = () => {
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+    const dispatch = useDispatch()
+    const listNews = useSelector((state:StateType) => state.newsPage.newsList)
+    const currentPage = useSelector((state:StateType) => state.newsPage.currentPage)
+    const pageSize = useSelector((state:StateType) => state.newsPage.pageSize)
+    const totalPlayersCount = useSelector((state:StateType) => state.newsPage.totalPlayersCount)
+    const message = useSelector((state:StateType) => state.newsPage.message)
+
+
+    useEffect(() => {
+        const getAllNews = () => {
+            dispatch(getListNews(1, 9))
         }
         getAllNews()
-    },[dispatch])
+    }, [dispatch])
 
-    const dispatchMethod = (pageNumber) =>{
-        dispatch(getListNews(pageNumber,pageSize))
+    const dispatchMethod = (pageNumber:number) => {
+        dispatch(getListNews(pageNumber, pageSize))
     }
-    const openCloseModalWindow = () =>{
+    const openCloseModalWindow = () => {
         setModalIsOpen(!modalIsOpen)
     }
 
@@ -57,11 +63,11 @@ export default function NewsPage () {
                 <div className={styles.wrapper__container__wrap}>
                     <AsideContainer/>
                     <div className={styles.wrapper__container__wrap__info}>
-                        {!!message ? <div>{message}</div>:null}
+                        {!!message ? <div>{message}</div> : null}
                         <button onClick={openCloseModalWindow}>Add News</button>
 
                         <div className={styles.wrapper__container__content}>
-                            {listNews.map(news => {
+                            {listNews.map((news:NewsInfoType) => {
                                 return <NewsContent news={news} key={news._id}/>
                             })}
                         </div>
@@ -86,3 +92,5 @@ export default function NewsPage () {
         </div>
     )
 }
+
+export default NewsPage

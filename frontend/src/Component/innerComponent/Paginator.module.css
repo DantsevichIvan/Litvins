@@ -23,6 +23,11 @@
     margin: 0 5px;
 
 }
+.paginatorNav span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .activePaginator{
     background: #ed1c27;
     color: #363533;

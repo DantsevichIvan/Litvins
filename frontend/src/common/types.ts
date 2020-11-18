@@ -19,13 +19,29 @@ type AuthPageType = {
     message: string
     playerId: null | string
 }
-type ClubPageType = {
+//ClubPAge
+export type ClubPageType = {
     infoForClub: null | string
-    infoYear: Array<number>
+    listYears: Array<InfoYearType>
+
 }
-type ContactPageType = {
-    contacts: Array<number>
+export type InfoYearType = {
+    year: number
+    id: number
+    activeClass: boolean
 }
+//ContactPage
+export type ContactPageType = {
+    contacts: Array<ContactInfoType>
+}
+export type ContactInfoType= {
+    position:string
+    phone:number
+    mail:string
+    address:string
+    id:number
+}
+//HomePage
 type HomePageType = {
     lastMatch: LastMatchType
     lastMatches: Array<LastMatchType>
@@ -49,6 +65,8 @@ export type StatisticsPlayerType = {
     count: number
     id: number
 }
+
+//MatchPage
 export type LastMatchType = {
     dateTime: number | string
     game: string
@@ -62,31 +80,52 @@ export type LastMatchType = {
 export type MatchType = {
     dateTime: string
     game: string
-    id: string
+    _id: string
     location: string
     opposingTeam: string
     score: boolean
     team: string
     value?: string
+    result?: {
+        resultTeam: number
+        resultOpposingTeam: number
+    }
 }
-type MatchesPageType = {
+export type NextMatchType = {
+    dateTime: string
+    game: string
+    _id: string
+    location: string
+    opposingTeam: string
+    score: boolean
+    team: string
+}
+export type MatchesPageType = {
     lastMatch: LastMatchType
     match: MatchType
-    matches: Array<number>
+    matches: Array<MatchType>
     message: string
     nextMatch: MatchType
 }
-type NewsPageType = {
+
+
+//NewsPage
+export type NewsInfoType = {
+    dataValue: string,
+    nameNews: string,
+    textNews: string,
+    _id: string
+}
+export type NewsPageType = {
     currentPage: number
     message: undefined | string
     messageAdd: string
-    news: { dataValue: string, nameNews: string, textNews: string }
-    newsList: Array<number>
+    newsList: Array<NewsInfoType>
     pageSize: number
     totalPlayersCount: number
+    news:NewsInfoType
 }
-
-
+//TeamPage
 export type TeamPageType = {
     currentPage: number
     pageSize: number
@@ -108,7 +147,7 @@ export type PlayerType = {
         assist: number
         bombardier: number
     }
-    _id:string
+    _id: string
 }
 
 // Array<string | number>

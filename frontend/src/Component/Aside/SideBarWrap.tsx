@@ -3,9 +3,11 @@ import styles from "./SideBarWrap.module.css";
 import imgNews from "../../logo/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg";
 import {NavLink} from "react-router-dom";
 
+interface sideBarWrapProps {
 
+}
 
-export default function SideBarWrap ({img, data, name}) {
+export default function SideBarWrap ({}:sideBarWrapProps) {
 return(
     <div className={styles.wrapper__container__newsSidebar_wrap}>
         <div className={styles.wrapper__container__newsSidebar_wrap_img} style={{backgroundImage: `url('${imgNews}')`}}>

@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import HeaderContainer from "../header/HeaderContainer";
+import HeaderContainer from "../Header/HeaderContainer";
 import styles from './Team.module.css'
 import Player from "./Player/Player";
 import Button from "./ButtonComponentTeam";
@@ -54,8 +54,7 @@ const Team:FC<TeamPageType> = () =>{
             <div className={styles.wrapper}>
                 <div className={styles.header}>
                     <HeaderContainer
-                        nextMatch={{value:null}}
-                        childrenLink={false}
+                        childrenLink={''}
                         header={false}
                         link={''}
                         title={'Team'}

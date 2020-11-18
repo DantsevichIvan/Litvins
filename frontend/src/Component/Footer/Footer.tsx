@@ -5,12 +5,6 @@ import logo from '../../logo/Litvin-LOGO.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faMapMarkerAlt, faPhoneAlt} from "@fortawesome/free-solid-svg-icons";
 
-// const inputSubmitStyle = {
-//     // backgroundImg: 'url(' + arrow + ')',
-//     backgroundRepeat: 'no-repeat',
-//     backgroundSize: '50%'
-// };
-
 export default function Footer() {
     return (
         <div className={styles.footer}>
@@ -59,13 +53,3 @@ export default function Footer() {
     )
 }
 
-// <div className={styles.wrapper__footer__wrap__copyrights}>
-//     <span>Copyright © 2015 Sportak Team. All Rights Reserved.</span>
-// </div>
-// <div className={styles.container__info__footerSocials}>
-//     <Link to={'#'}><FontAwesomeIcon icon={faVk}/></Link>
-//     <Link to={'#'}><FontAwesomeIcon icon={faTwitter}/></Link>
-//     <Link to={'#'}><FontAwesomeIcon icon={faYoutube}/></Link>
-//     <Link to={'#'}><FontAwesomeIcon icon={faInstagram}/></Link>
-//     <Link to={'#'}><FontAwesomeIcon icon={faGoogle}/></Link>
-// </div>

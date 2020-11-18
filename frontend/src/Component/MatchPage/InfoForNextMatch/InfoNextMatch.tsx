@@ -2,9 +2,14 @@ import React from "react";
 import styles from "./TimeInfoForNextMatch.module.css";
 import cn from "classnames";
 import moment from "moment";
+import {NextMatchType} from '../../../common/types'
 
 
-export default function InfoNextMatch ({header,nextMatch}) {
+interface NextMatchProps {
+    header?:boolean
+    nextMatch:NextMatchType
+}
+const InfoNextMatch =  ({header,nextMatch}:NextMatchProps) => {
     return(
         <div className={styles.container__singleNextMatch__listItem__aboutMatch}>
             <div className={styles.container__singleNextMatch__listItem__aboutMatch__info}>
@@ -31,3 +36,4 @@ export default function InfoNextMatch ({header,nextMatch}) {
         </div>
     )
 }
+export default InfoNextMatch

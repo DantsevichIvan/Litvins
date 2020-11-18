@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import HeaderContainer from "../header/HeaderContainer";
+import HeaderContainer from "../Header/HeaderContainer";
 import styles from './Match.module.css'
 import AsideContainer from "../Aside/AsideContainer";
 import SimpleMap from "../innerComponent/SimpleMap";
@@ -7,15 +7,17 @@ import arrangement from '../../logo/rI61HzFz5pc.jpg'
 import GalleryPhotosMatch from "../Sliders/GalleryPhotosMatch";
 import {useDispatch, useSelector} from "react-redux";
 import {getMatch} from "../../action/matchsActions";
+import {StateType} from '../../common/types'
 
 
-export default function Match(props) {
+export default function Match(props:any) {
     const dispatch = useDispatch();
-    const match = useSelector(state => state.matchesPage.match)
+    const match = useSelector((state:StateType) => state.matchesPage.match)
     useEffect(() => {
         const id = props.match.params.matchId
         dispatch(getMatch(id))
     },[dispatch,props])
+    debugger
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -25,6 +27,7 @@ export default function Match(props) {
                     header={true}
                     link={'list-matches'}
                     childrenLink={'ENGLAND VS AMSTERDAM'}
+                    title={''}
                 />
             </div>
             <div className={styles.container}>

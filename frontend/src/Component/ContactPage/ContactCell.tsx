@@ -3,10 +3,14 @@ import styles from "./ContactCell.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faMapMarkerAlt, faPhoneAlt} from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
+import {ContactInfoType} from '../../common/types'
 
 
+interface contactCellProps {
+    contact:ContactInfoType
+}
 
-export default function ContactCell({contact}) {
+export default function ContactCell({contact}:contactCellProps) {
     return (
         <div className={styles.contact_enquiries}>
             <div className={styles.contact_enquiries_title}>

@@ -14,9 +14,9 @@ const links = [
     {title: 'Новости', address: "/list-news", id:5},
     {title: 'Контакты', address: "/contact", id:6}
 ]
+
+
 export default class Header extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {

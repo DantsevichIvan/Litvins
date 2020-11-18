@@ -1,12 +1,7 @@
-import styles from "./AddNewMatch.module.css";
 import {Field, reduxForm} from "redux-form";
+import {AInputNumber} from "../../FormsControls/FormsControls";
 import {Button} from "antd";
 import React from "react";
-import {AInputNumber} from "../../FormsControls/FormsControls";
-import {useDispatch} from "react-redux";
-import {addResultMatch} from "../../../action/matchsActions";
-import {successMessages} from "../../FormsControls/AuxiliaryFunction";
-
 
 let ResultMatchForm = ({handleSubmit, playedMatch}) => {
     return (
@@ -63,21 +58,9 @@ let ResultMatchForm = ({handleSubmit, playedMatch}) => {
         </form>
     )
 };
-const AddResultMatchForm = reduxForm({
+export const AddResultMatchForm = reduxForm({
     form: 'resultForm'
-})(ResultMatchForm);
-export default function AddResultMatch({playedMatch,closeModal,modal}) {
-    const dispatch = useDispatch()
-    const onSubmit = (formData) => {
-        dispatch(addResultMatch(formData, playedMatch._id))
-        successMessages('Результат добавлен')
-        closeModal(!modal)
-    }
-    return (
-        <div className={styles.wrap}>
-            <div className={styles.container}>
-                <AddResultMatchForm playedMatch={playedMatch} onSubmit={onSubmit}/>
-            </div>
-        </div>
-    )
-}
+})(ResultMatchForm)
+
+
+

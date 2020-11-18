@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import HeaderContainer from "../header/HeaderContainer";
+import HeaderContainer from "../Header/HeaderContainer";
 import styles from './ListMatch.module.css'
 import AsideContainer from "../Aside/AsideContainer";
 import InfoMatch from "./InfoMatch";
@@ -8,9 +8,12 @@ import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
 import AddNewMatch from "./Form/AddNewMatch";
 import AddResultMatch from "./Form/AddResultMatch";
+import {StateType,MatchType} from '../../common/types'
 
-
-const customStyles = {
+interface  customStylesProps{
+    content:object
+}
+const customStyles:customStylesProps = {
     content: {
         width: '700px',
         height: '300px',
@@ -25,28 +28,28 @@ const customStyles = {
     }
 };
 
-export default function ListMatches() {
+
+const ListMatches = () => {
     const dispatch = useDispatch()
-    const listMatches = useSelector(state => state.matchesPage.matches)
-    const nextMatch = useSelector(state => state.matchesPage.nextMatch)
-    const [modalIsOpen, setIsOpen] = useState(false);
-    const [modalResultMatchIsOpen, setModalResultMatchIsOpen] = useState(false);
+    const listMatches = useSelector((state:StateType) => state.matchesPage.matches)
+    const nextMatch = useSelector((state:StateType) => state.matchesPage.nextMatch)
+    const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+    const [modalResultMatchIsOpen, setModalResultMatchIsOpen] = useState<boolean>(false);
     const [playedMatch, setPlayedMatch] = useState({});
 
     useEffect(() => {
         dispatch(getMatches())
         dispatch(getNextMatch())
     }, [dispatch])
-
-    useEffect(()=>{
+    useEffect(() => {
         checkMatches()
-    },[listMatches])
+    }, [listMatches])
 
-    const checkMatches = () =>{
+    const checkMatches = ():any => {
         const currentD = new Date();
-        listMatches.forEach((match)=>{
+        listMatches.forEach((match) => {
             const checkDate = new Date(match.dateTime)
-            if (currentD > checkDate && !match.score){
+            if (currentD > checkDate && !match.score) {
                 setPlayedMatch(match)
                 setModalResultMatchIsOpen(!modalResultMatchIsOpen)
             }
@@ -55,6 +58,8 @@ export default function ListMatches() {
     const onAddMatchBtn = () => {
         setIsOpen(!modalIsOpen)
     }
+
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -62,7 +67,10 @@ export default function ListMatches() {
                     nextMatch={nextMatch}
                     title={'MATCH LIST'}
                     activeLink={'Список матчей'}
-                    header={true}/>
+                    header={true}
+                    link={''}
+                    childrenLink={''}
+                />
             </div>
             <div className={styles.container}>
                 <div className={styles.container__content}>
@@ -70,7 +78,7 @@ export default function ListMatches() {
                     <div className={styles.content}>
                         <div className={styles.listMatch}>
                             {
-                                listMatches.map((match) => {
+                                listMatches.map((match:MatchType) => {
                                     return <InfoMatch match={match} key={match._id}/>
                                 })
                             }
@@ -93,7 +101,6 @@ export default function ListMatches() {
                            className={styles.modal}>
                         <AddResultMatch
                             playedMatch={playedMatch}
-                            closeModal={setModalResultMatchIsOpen}
                             modal={modalResultMatchIsOpen}/>
                     </Modal>
                 </div>
@@ -102,3 +109,6 @@ export default function ListMatches() {
 
     )
 }
+
+
+export default ListMatches

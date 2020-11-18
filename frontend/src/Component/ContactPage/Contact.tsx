@@ -1,16 +1,19 @@
-import React, {useEffect} from "react";
+import React, {FC, useEffect} from "react";
 import styles from './Contact.module.css'
-import HeaderContainer from "../header/HeaderContainer";
+import HeaderContainer from "../Header/HeaderContainer";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faVk, faTwitter, faYoutube, faInstagram, faGoogle} from '@fortawesome/free-brands-svg-icons'
 import {NavLink} from "react-router-dom";
 import ContactCell from "./ContactCell";
 import {useDispatch, useSelector} from "react-redux";
 import {getContacts} from "../../action/contactActions";
+import {ContactPageType,StateType} from '../../common/types'
 
-export default function Contact() {
+
+
+const Contact:FC<ContactPageType> = () => {
     const dispatch = useDispatch()
-    const contactsList = useSelector(state => state.contactPage.contacts)
+    const contactsList = useSelector((state:StateType) => state.contactPage.contacts)
 
     useEffect(() => {
         dispatch(getContacts())
@@ -58,3 +61,5 @@ export default function Contact() {
         </div>
     )
 }
+
+export default Contact

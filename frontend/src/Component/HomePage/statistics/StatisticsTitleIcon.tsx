@@ -6,7 +6,6 @@ interface Props {
 }
 
 export default function StatisticsTitleIcon({title}:Props) {
-    debugger
     return (
         <span className={styles.titleIcon}>{title}</span>
     )

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './InfoMatch.module.css'
 import clubLogo1 from '../../logo/club-logo.png'
 import clubLogo2 from '../../logo/club-logo1.png'
@@ -6,8 +6,11 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 import {NavLink} from "react-router-dom";
 import moment from 'moment';
+import {MatchType} from '../../common/types'
 
-export default function InfoMatch({match}) {
+type InfoMatchType = {match:MatchType }
+
+ const InfoMatch:FC<InfoMatchType> = ({match}) =>{
     const matchData = moment(match.dateTime).format('MMM Do').split(' ')
     return (
         <div className={styles.item}>
@@ -55,3 +58,5 @@ export default function InfoMatch({match}) {
         </div>
     )
 }
+
+export default InfoMatch

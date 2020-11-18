@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import styles from "./Paginator.module.css";
+import  styles from "./Paginator.module.css";
 import {NavLink} from "react-router-dom";
 import cn from "classnames"
 
@@ -8,7 +8,7 @@ interface PaginatorProps{
     currentPage:number
     pageSize:number
     totalPlayersCount:number
-    portionSize:number
+    portionSize?:number
     onDispatchMethod:(currentPage:number ) =>void
 }
 
@@ -30,14 +30,17 @@ export default function Paginator({currentPage, pageSize, totalPlayersCount, por
             }
             return newCurrentPage
         })
-        onDispatchMethod(currentPage)
+        debugger
+        onDispatchMethod(pageNumber)
     }
     const onPageChangedNextPrev = (value:string) =>{
         setPortionNumber(():any => {
             if(value === 'Next'){
+                debugger
                 setPortionNumber(portionNumber+1)
                 onDispatchMethod(currentPage+1)
             }else {
+                debugger
                 setPortionNumber(portionNumber-1)
                 onDispatchMethod(currentPage-1)
             }
