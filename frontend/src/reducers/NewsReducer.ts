@@ -19,7 +19,7 @@ const initState = {
     messageAdd:''
 }
 
-const NewsReducer = (state=initState, action) => {
+const NewsReducer = (state=initState, action: any) => {
     switch (action.type) {
         case SET_LIST_NEWS: {
             debugger
@@ -65,37 +65,37 @@ const NewsReducer = (state=initState, action) => {
     }
 }
 
-export const setListNews = (data) =>{
+export const setListNews = (data: any) =>{
     return {
         type:SET_LIST_NEWS,
         data
     }
 }
-export const setNews = (data) =>{
+export const setNews = (data: any) =>{
     return {
         type:SET_NEWS,
         data
     }
 }
-export const setCurrentPage = (currentPage) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: SET_CURRENT_PAGE,
         currentPage
     }
 };
-export const setTotalUsersCount = (totalUserCount) => {
+export const setTotalUsersCount = (totalUserCount: number) => {
     return {
         type: SET_TOTAL_NEWS_COUNT,
         count: totalUserCount
     }
 };
-export const addNews = (data) => {
+export const addNews = (data: any) => {
     return {
         type: ADD_NEWS,
         data
     }
 };
-export const setMessage = (data) => {
+export const setMessage = (data: any) => {
     return {
         type: SET_MESSAGE,
         data
@@ -103,3 +103,5 @@ export const setMessage = (data) => {
 };
 
 export default NewsReducer
+
+// : any 6

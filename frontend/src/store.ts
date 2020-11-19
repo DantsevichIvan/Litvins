@@ -9,7 +9,8 @@ import NewsReducer from "./reducers/NewsReducer";
 import ContactReducer from "./reducers/ContactReducer";
 import AuthReducer from "./reducers/AuthReducer";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers: any = compose;
 
 const store = createStore(
     combineReducers({

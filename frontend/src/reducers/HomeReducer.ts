@@ -16,7 +16,8 @@ const initState = {
     statisticsPlayers:[]
 }
 
-const HomeReducer = (state=initState, action) => {
+
+const HomeReducer = (state=initState, action: any) => {
     switch (action.type) {
         case SET_ALL_INFO_HOME_PAGE:{
            return {
@@ -41,10 +42,12 @@ const HomeReducer = (state=initState, action) => {
             }
     }
 }
-export const setAllInfoHomePage = (data) =>{
+export const setAllInfoHomePage = (data: any) =>{
     return {
         type:SET_ALL_INFO_HOME_PAGE,
         data
     }
 }
 export default HomeReducer
+
+// : any 2

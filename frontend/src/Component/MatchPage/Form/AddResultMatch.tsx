@@ -15,7 +15,7 @@ export default function AddResultMatch({playedMatch, modal}:AddResultMatchProps)
     debugger
     const dispatch = useDispatch()
     const onSubmit = (formData:object ) => {
-        dispatch(addResultMatch(formData))
+        dispatch(addResultMatch(formData, 48888888888888))
         successMessages('Результат добавлен')
 
     }

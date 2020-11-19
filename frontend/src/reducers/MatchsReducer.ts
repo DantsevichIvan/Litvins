@@ -43,7 +43,7 @@ const initState = {
     message: ''
 }
 
-const MatchesReducer = (state = initState, action) => {
+const MatchesReducer = (state = initState, action: any) => {
     switch (action.type) {
         case SET_MATCHES: {
             return {
@@ -120,37 +120,37 @@ const MatchesReducer = (state = initState, action) => {
     }
 }
 
-export const setMatches = (data) => {
+export const setMatches = (data: any) => {
     return {
         type: SET_MATCHES,
         data
     }
 }
-export const setMatch = (match) => {
+export const setMatch = (match: any) => {
     return {
         type: SET_MATCH,
         match
     }
 }
-export const setNextMatch = (data) => {
+export const setNextMatch = (data: any) => {
     return {
         type: SET_NEXT_MATCH,
         data
     }
 }
-export const setLastMatch = (match) => {
+export const setLastMatch = (match: any) => {
     return {
         type: SET_LAST_MATCH,
         match
     }
 }
-export const addMatch = (data) => {
+export const addMatch = (data: any) => {
     return {
         type: ADD_MATCH,
         data
     }
 }
-export const setMessage = data => {
+export const setMessage = (data : any) => {
     return {
         type: SET_MESSAGE,
         data
@@ -164,3 +164,6 @@ export const setMessage = data => {
 // }
 
 export default MatchesReducer
+
+
+// : any  7
