@@ -1,8 +1,8 @@
 import React, {FC, useCallback, useEffect} from 'react'
 import HeaderContainer from "../Header/HeaderContainer";
 import styles from './InfoNews.module.css'
-import SliderNewsContent from "../Sliders/SliderNewsContent";
-import SliderListNews from "../Sliders/SliderListNews";
+import {SliderNewsContent} from "../Sliders/SliderNewsContent";
+import {SliderListNews} from "../Sliders/SliderListNews";
 import AsideContainer from "../Aside/AsideContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {getListNews, getNews} from "../../action/newsActions";

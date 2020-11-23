@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from "react";
 import styles from './InfoPlayer.module.css'
 import avatar from "./../../../logo/f401649c954a6ca111acf083eac616cf.jpg"
-import SliderPlayers from "../../Sliders/SliderPlayers";
+import {SliderPlayers} from "../../Sliders/SliderPlayers";
 import {useDispatch, useSelector} from "react-redux";
 import {getPlayer, getPlayers} from "../../../action/teamActions";
 import {IndicatorStatistic} from "./IndicatorStatistic";

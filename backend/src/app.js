@@ -20,16 +20,16 @@ require('./routers')(app)
 
 app.use(bodyParser.json());
 
-app.use(session({
-    store: new MongoStore({
-        mongooseConnection: mongoose.connection,
-        url: db
-    }),
-    cookie: {maxAge: 300000, secure: true},
-    secret: 'foo',
-    resave: false,
-    saveUninitialized: true
-}))
+// app.use(session({
+//     store: new MongoStore({
+//         mongooseConnection: mongoose.connection,
+//         url: db
+//     }),
+//     cookie: {maxAge: 300000, secure: true},
+//     secret: 'foo',
+//     resave: false,
+//     saveUninitialized: true
+// }))
 
 if (process.env.NOdE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
