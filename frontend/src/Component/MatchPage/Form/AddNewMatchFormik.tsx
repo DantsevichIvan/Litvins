@@ -130,7 +130,7 @@ export const AddNewMatchFormik = () => (
                 type="text"
                 name="opposingTeam"
                 label="Opposing team"
-                select
+                // select
                 variant="standard"
                 helperText="Please select opposing team"
                 margin="normal"
