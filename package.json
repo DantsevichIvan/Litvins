@@ -1,13 +1,52 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://dantsevichivan.github.io/Litvins",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "concurrently  \"(npm start --prefix backend)\" \"(npm start  --prefix frontend)\""
+    "start": "concurrently  \"(npm start --prefix backend)\" \"(npm start  --prefix frontend)\"",
+    "test-backend": "mocha --timeout 15000 backend/test.js",
+    "server": "set NODE_ENV=development&& nodemon --inspect backend/server.js"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "ioredis": "^4.17.3",
+    "jw-paginate": "^1.0.4",
     "moment": "^2.27.0",
-    "react-router-dom": "^5.1.2"
+    "mongoose": "^5.10.12",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1",
+    "supertest-session": "^4.1.0"
   },
   "name": "litvins",
   "version": "1.0.0",
@@ -16,11 +55,7 @@
     "type": "git",
     "url": "git+https://github.com/DantsevichIvan/Litvins.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/DantsevichIvan/Litvins/issues"
-  },
-  "homepage": "https://github.com/DantsevichIvan/Litvins#readme",
-  "description": ""
+  }
 }
