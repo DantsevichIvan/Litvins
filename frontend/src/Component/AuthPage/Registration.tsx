@@ -7,11 +7,82 @@ import {makeField, renderInput} from "../FormsControls/FormsControls";
 import {required} from "../FormsControls/validation";
 import {Redirect} from "react-router-dom";
 import {InfoAbout, Name, Statistic} from "../FormsControls/FormsComponent";
-import {DatePicker, Input} from "antd";
+import {Button, DatePicker, Input} from "antd";
 // import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import moment from 'moment';
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import {Form, Formik} from 'formik';
+import Box from '@material-ui/core/Box';
 
 export const ARangePicker = makeField(DatePicker);
+
+export const RegistrationFormik = () => {
+  return (
+    <Formik
+      initialValues={{
+        email: '',
+        newsDate: new Date(),
+        newsContent: ''
+      }}
+
+      onSubmit={(values) => {
+        alert(JSON.stringify(values));
+        // handleSubmit(values)
+        // dispatch(loginTC(values))
+      }}
+    >
+      {({submitForm, isSubmitting}) => (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Form>
+            <Box margin={1}>
+              <Field
+                name="userName"
+                type="text"
+                // label="EmailTEST"
+                helperText="Please enter your name"
+              />
+            </Box>
+            <Box margin={1}>
+              <Field
+                name="userSurname"
+                type="text"
+                // label="EmailTEST"
+                helperText="Please enter your surname"
+              />
+            </Box>
+            <Box margin={1}>
+              <Field
+                component={DatePicker}
+                name="birthday"
+                label="Please check your surname"
+              />
+            </Box>
+            <Box margin={1}>
+              <Field
+                name="newsContent"
+                type="text"
+                // label="EmailTEST"
+                helperText="Please enter news content"
+              />
+            </Box>
+
+            <Box margin={1}>
+              <Button
+                // variant="contained"
+                color="primary"
+                disabled={isSubmitting}
+                onClick={submitForm}
+              >
+                Submit
+              </Button>
+            </Box>
+          </Form>
+        </MuiPickersUtilsProvider>
+      )}
+    </Formik>
+  )
+}
 
 const RegistrationForm = ({handleSubmit}: any) => {
     return (
@@ -74,6 +145,8 @@ const RegistrationReduxForm = reduxForm({
     form: 'Registration',
 })(RegistrationForm);
 
+
+
 export default function Registration() {
     // const player = useSelector(state => state.authPage.playerId)
     const isAuth = useSelector((state: any) => state.authPage.isAuth)//true or false
@@ -92,6 +165,7 @@ export default function Registration() {
         <div className={styles.wrap}>
             <div className={styles.container}>
                 <RegistrationReduxForm onSubmit={onSubmit}/>
+                {/*<RegistrationFormik/>*/}
             </div>
         </div>
     )

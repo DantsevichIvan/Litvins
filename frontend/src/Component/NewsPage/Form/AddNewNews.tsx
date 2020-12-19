@@ -3,7 +3,7 @@ import {successMessages} from "../../FormsControls/AuxiliaryFunction";
 import styles from "./AddNewsForm.module.css";
 import React, {useState} from "react";
 import {addNewsThunk, fileUploadHandler} from "../../../action/newsActions";
-import {AddNewsForm} from "./NewsForm";
+import {AddNewsForm, AddNewsFormik} from "./NewsForm";
 
 
 export default function AddNewNews({openCloseModalWindow} : any) {
@@ -14,7 +14,7 @@ export default function AddNewNews({openCloseModalWindow} : any) {
     const onSubmit = (fd : any) => {
         let formData = new FormData();
         formData.append("photo", fileList[0].originFileObj);
-        debugger
+        // debugger
         dispatch(addNewsThunk(fd))
         // dispatch(fileUploadHandler(formData))
         successMessages('Новость добавлена')
@@ -25,6 +25,9 @@ export default function AddNewNews({openCloseModalWindow} : any) {
         <div className={styles.wrap}>
             <div className={styles.container}>
                 <button onClick={openCloseModalWindow}>Close</button>
+                {/*<AddNewsFormik*/}
+                {/*  // onSubmit={onSubmit}*/}
+                {/*/>*/}
                 <AddNewsForm
                     onSubmit={onSubmit}
                     fileList={fileList}

@@ -3,8 +3,13 @@ import {Field, reduxForm} from "redux-form";
 import {ADatePicker, AInput, AInputTextArea} from "../../FormsControls/FormsControls";
 import moment from "moment";
 import {required} from "../../FormsControls/validation";
-import {Button, Upload} from "antd";
-import React, {FC} from "react";
+import {Button} from "antd";
+import React from "react";
+import {Form, Formik} from "formik";
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import Box from '@material-ui/core/Box';
+import {DatePicker} from 'formik-material-ui-pickers';
 
 const NewsForm = ({handleSubmit, setFileList, fileList} : any) => {
     const handlePreview = (file : any) => {
@@ -61,6 +66,70 @@ const NewsForm = ({handleSubmit, setFileList, fileList} : any) => {
             </Button>
         </form>
     )
+};
+
+
+export const AddNewsFormik = () => {
+debugger
+  return (
+    <>
+      <Formik
+        initialValues={{
+          email: '',
+          newsDate: new Date(),
+          newsContent: ''
+        }}
+
+        onSubmit={(values) => {
+          alert(JSON.stringify(values));
+          // handleSubmit(values)
+          // dispatch(loginTC(values))
+        }}
+      >
+        {({submitForm, isSubmitting}) => (
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Form>
+              <Box margin={1}>
+                <Field
+                  name="newsTitle"
+                  type="text"
+                  // label="EmailTEST"
+                  helperText="Please enter news title"
+                />
+              </Box>
+              <Box margin={1}>
+                <Field
+                  component={DatePicker}
+                  name="newsDate"
+                  label="News date"
+                />
+              </Box>
+              <Box margin={1}>
+                <Field
+                  name="newsContent"
+                  type="text"
+                  // label="EmailTEST"
+                  helperText="Please enter news content"
+                />
+              </Box>
+
+              <Box margin={1}>
+                <Button
+                  // variant="contained"
+                  color="primary"
+                  disabled={isSubmitting}
+                  onClick={submitForm}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Form>
+          </MuiPickersUtilsProvider>
+        )}
+      </Formik>
+
+    </>
+  )
 };
 
 export const AddNewsForm : any = reduxForm({
