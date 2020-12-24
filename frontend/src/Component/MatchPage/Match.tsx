@@ -17,7 +17,6 @@ export default function Match(props: any) {
     const id = props.match.params.matchId
     dispatch(getMatch(id))
   }, [dispatch, props])
-  debugger
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>

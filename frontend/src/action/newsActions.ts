@@ -1,5 +1,6 @@
 import {imageApi, newsApi} from "../api/api";
-import {addNews, setCurrentPage, setListNews, setMessage, setNews, setTotalUsersCount} from "../reducers/NewsReducer";
+import {setCurrentPage, setListNews, setMessage, setNews, setTotalUsersCount} from "../reducers/NewsReducer";
+import {OneNewsType} from '../Component/NewsPage/Form/NewsFormik';
 
 export const getListNews = (currentPage: number, pageSize: number) => async (dispatch: any) => {
   dispatch(setCurrentPage(currentPage))
@@ -17,14 +18,25 @@ export const getNews = (newsId: any) => async (dispatch: any) => {
   const data = await newsApi.getNews(newsId)
   dispatch(setNews(data))
 }
-export const addNewsThunk = (newsInfo: any) => async (dispatch: any) => {
-  const data = await newsApi.addNews(newsInfo)
-  dispatch(addNews(data))
-  dispatch(setListNews(data))
+
+export type AddNewsResponseType = {
+  config: any;
+  data: { message: string, success: boolean }
+  headers: any
+  request?: any
+  status: number
+  statusText: string
 }
+
+export const addNewsThunk = (newsInfo: OneNewsType) => async (dispatch: any) => {
+  const response: AddNewsResponseType = await newsApi.addNews(newsInfo)
+  if (response.status === 201) {
+    dispatch(getListNews(1, 8))
+  }
+}
+
 export const fileUploadHandler = (fd: any) => async (dispatch: any) => {
   const data = await imageApi.uploadFile(fd)
-  console.log(data)
 }
 
 // : any 7

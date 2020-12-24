@@ -30,17 +30,14 @@ export default function Paginator({currentPage, pageSize, totalPlayersCount, por
             }
             return newCurrentPage
         })
-        debugger
         onDispatchMethod(pageNumber)
     }
     const onPageChangedNextPrev = (value:string) =>{
         setPortionNumber(():any => {
             if(value === 'Next'){
-                debugger
                 setPortionNumber(portionNumber+1)
                 onDispatchMethod(currentPage+1)
             }else {
-                debugger
                 setPortionNumber(portionNumber-1)
                 onDispatchMethod(currentPage-1)
             }

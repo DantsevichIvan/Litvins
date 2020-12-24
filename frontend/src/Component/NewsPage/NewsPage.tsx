@@ -38,6 +38,7 @@ const NewsPage:FC<NewsPageType> = () => {
     const pageSize = useSelector((state:StateType) => state.newsPage.pageSize)
     const totalPlayersCount = useSelector((state:StateType) => state.newsPage.totalPlayersCount)
     const message = useSelector((state:StateType) => state.newsPage.message)
+    console.log('listNews ', listNews)
 
 
     useEffect(() => {

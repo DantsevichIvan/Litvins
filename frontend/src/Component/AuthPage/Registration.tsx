@@ -152,8 +152,7 @@ export default function Registration() {
     const isAuth = useSelector((state: any) => state.authPage.isAuth)//true or false
     // const dispatch = useDispatch()
     const onSubmit = (formData: any) => {
-        // console.log(formData)
-        console.log(moment(formData.birthday.birthdayDay._d).format('MM/DD/YYYY'))
+        // console.log(moment(formData.birthday.birthdayDay._d).format('MM/DD/YYYY'))
         // dispatch(registration(formData))
     }
 

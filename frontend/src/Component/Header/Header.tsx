@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 // import CheeseburgerMenu from "cheeseburger-menu";
 import HamburgerMenu from 'react-hamburger-menu'
 import MenuContent from "../innerComponent/MenuContent";
+import {RegistrationActions} from '../Registration/RegistrationActions';
 
 const links = [
   {title: 'Главная', address: "/", id: 1},
@@ -18,13 +19,19 @@ const links = [
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const openMenu =()=> {
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+
+  const openMenu = () => {
     setMenuOpen(true)
   };
-  const closeMenu =()=> {
+  const closeMenu = () => {
     setMenuOpen(false)
   }
 
+  const changeIsAuth = (isAuth: boolean) => {
+    setIsAuth(isAuth)
+  }
 
   return (
     <header>
@@ -42,6 +49,8 @@ export const Header = () => {
               <NavLink to="/list-news" activeClassName={styles.activeLink}>Новости</NavLink>
               <NavLink to="contact" activeClassName={styles.activeLink}>Контакты</NavLink>
             </ul>
+            <RegistrationActions isAuth={isAuth}
+                                 changeIsAuth={changeIsAuth}/>
           </div>
           <div className={styles.burgerMenu}>
             {/*<CheeseburgerMenu*/}

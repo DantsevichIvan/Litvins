@@ -18,7 +18,6 @@ export const AddMatch = (matchInfo: any) => async (dispatch: any) => {
 }
 export const deleteMatch = (matchId: any) => async (dispatch: any) => {
     const data = await matchesApi.deleteMatch(matchId)
-    console.log(data)
     // dispatch(deleteMatch(data))
     dispatch(getMatches())
 }
@@ -28,7 +27,6 @@ export const addResultMatch = (result: any, matchID: any) => async (dispatch: an
 
 // export const addResultMatch = (result: any) => async (dispatch: any) => {
 //     const data = await matchesApi.addResultMatch(result)
-    console.log(data)
     dispatch(getMatches())
 }
 export const getNextMatch = () => async (dispatch: any) => {

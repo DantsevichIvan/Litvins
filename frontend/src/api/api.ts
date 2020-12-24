@@ -1,4 +1,5 @@
 import axios from "axios";
+import {OneNewsType} from '../Component/NewsPage/Form/NewsFormik';
 
 const instance = axios.create({
     withCredentials: true,
@@ -75,9 +76,8 @@ export const newsApi = {
         return instance.get(`list-news/news/` + newsId)
             .then(res => res.data)
     },
-    addNews(newsInfo: any) {
+    addNews(newsInfo: OneNewsType) {
         return instance.post(`list-news/news/`, {newsInfo})
-            .then(res => res.data)
     },
 
 }

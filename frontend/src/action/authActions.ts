@@ -3,12 +3,10 @@ import {SetAuthUser, SUCCESS_ERROR, SuccessLoginOut} from "../reducers/AuthReduc
 
 export const logIn = (login: string, password: string) => async (dispatch: any) => {
   const res = await authAPI.login(login, password)
-  console.log(res)
   // dispatch(SuccessLogin(res))
 };
 export const logOut = () => async (dispatch: any) => {
   const res = await authAPI.logOut()
-  console.log(res)
   dispatch(SuccessLoginOut(res))
 };
 export const SuccessError = (data: any) => {
@@ -20,7 +18,6 @@ export const registration = (formData: any) => async (dispatch: any) => {
     dispatch(SetAuthUser(res.data))
   } else if (res.status === 400) {
     dispatch(SuccessError(res.data))
-    console.log(res)
   }
 };
 

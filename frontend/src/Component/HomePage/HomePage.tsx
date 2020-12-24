@@ -11,7 +11,6 @@ import {StateType} from '../../common/types';
 export default function HomePage() {
     const dispatch = useDispatch()
     // const state = useSelector((state: StateType) => state)
-    // console.log('state ', state)
     // const player = useSelector((state: StateType) => state.authPage.isAuth)
     const listMatches = useSelector((state: StateType) => state.homePage.lastMatches)
     const newsList = useSelector((state: StateType) => state.homePage.newsList)
