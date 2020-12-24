@@ -79,6 +79,12 @@ export const newsApi = {
     addNews(newsInfo: OneNewsType) {
         return instance.post(`list-news/news/`, {newsInfo})
     },
+    updateNews(newsInfo: OneNewsType, updateNewsId: string) {
+        return instance.put(`list-news/news/${updateNewsId}`, {newsInfo})
+    },
+    deleteNews(deleteNewsId: string) {
+        return instance.delete(`list-news/news/${deleteNewsId}`)
+    },
 
 }
 export const imageApi = {

@@ -7,91 +7,102 @@ import AsideContainer from "../Aside/AsideContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {getListNews} from "../../action/newsActions";
 import Modal from "react-modal";
-import AddNewNews from "./Form/AddNewNews";
-import {NewsPageType,StateType,NewsInfoType} from '../../common/types'
+import AddUpdateNewNews from "./Form/AddUpdateNewNews";
+import {NewsPageType, StateType, NewsInfoType} from '../../common/types'
 
-interface customStylesProps {
-    content:{}
+export type customStylesProps = {
+  content: {
+    // width: string,
+    // height: string,
+    // top: string,
+    // left: string,
+    // right: string,
+    // bottom: string,
+    // marginRight: string,
+    // transform: string,
+    // zIndex: number,
+    // position: string,
+    // opacity: number
+  }
 }
-const customStyles:customStylesProps = {
-    content: {
-        width: '700px',
-        height: '300px',
-        top: '55%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        zIndex: 9999,
-        position: 'relative',
-        opacity: 1
-    }
+
+export const customStyles: customStylesProps = {
+  content: {
+    width: '700px',
+    height: '300px',
+    top: '55%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 9999,
+    position: 'relative',
+    opacity: 1
+  }
 };
 
 
-const NewsPage:FC<NewsPageType> = () => {
-    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
-    const dispatch = useDispatch()
-    const listNews = useSelector((state:StateType) => state.newsPage.newsList)
-    const currentPage = useSelector((state:StateType) => state.newsPage.currentPage)
-    const pageSize = useSelector((state:StateType) => state.newsPage.pageSize)
-    const totalPlayersCount = useSelector((state:StateType) => state.newsPage.totalPlayersCount)
-    const message = useSelector((state:StateType) => state.newsPage.message)
-    console.log('listNews ', listNews)
+const NewsPage: FC<NewsPageType> = () => {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+  const dispatch = useDispatch()
+  const listNews = useSelector((state: StateType) => state.newsPage.newsList)
+  const currentPage = useSelector((state: StateType) => state.newsPage.currentPage)
+  const pageSize = useSelector((state: StateType) => state.newsPage.pageSize)
+  const totalPlayersCount = useSelector((state: StateType) => state.newsPage.totalPlayersCount)
+  const message = useSelector((state: StateType) => state.newsPage.message)
 
-
-    useEffect(() => {
-        const getAllNews = () => {
-            dispatch(getListNews(1, 9))
-        }
-        getAllNews()
-    }, [dispatch])
-
-    const dispatchMethod = (pageNumber:number) => {
-        dispatch(getListNews(pageNumber, pageSize))
+  useEffect(() => {
+    const getAllNews = () => {
+      dispatch(getListNews(1, 9))
     }
-    const openCloseModalWindow = () => {
-        setModalIsOpen(!modalIsOpen)
-    }
+    getAllNews()
+  }, [dispatch])
 
-    return (
-        <div className={styles.wrapper}>
-            <div className={styles.header}>
-                <HeaderContainer title={'Новости'} activeLink={'Новости'}/>
-            </div>
-            <div className={styles.wrapper__container}>
-                <div className={styles.wrapper__container__wrap}>
-                    <AsideContainer/>
-                    <div className={styles.wrapper__container__wrap__info}>
-                        {!!message ? <div>{message}</div> : null}
-                        <button onClick={openCloseModalWindow}>Add News</button>
+  const dispatchMethod = (pageNumber: number) => {
+    dispatch(getListNews(pageNumber, pageSize))
+  }
+  const openCloseModalWindow = () => {
+    setModalIsOpen(!modalIsOpen)
+  }
 
-                        <div className={styles.wrapper__container__content}>
-                            {listNews.map((news:NewsInfoType) => {
-                                return <NewsContent news={news} key={news._id}/>
-                            })}
-                        </div>
-                        <div className={styles.paginator}>
-                            <PaginatorNews
-                                currentPage={currentPage}
-                                pageSize={pageSize}
-                                totalPlayersCount={totalPlayersCount}
-                                onDispatchMethod={dispatchMethod}
-                            />
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <HeaderContainer title={'Новости'} activeLink={'Новости'}/>
+      </div>
+      <div className={styles.wrapper__container}>
+        <div className={styles.wrapper__container__wrap}>
+          <AsideContainer/>
+          <div className={styles.wrapper__container__wrap__info}>
+            {!!message ? <div>{message}</div> : null}
+            <button onClick={openCloseModalWindow}>Add News</button>
+
+            <div className={styles.wrapper__container__content}>
+              {listNews.map((news: NewsInfoType) => {
+                return <NewsContent news={news} key={news._id}/>
+              })}
             </div>
-            <Modal isOpen={modalIsOpen}
-                   style={customStyles}
-                   ariaHideApp={false}
-                   contentLabel="Example Modal"
-                   className={styles.modal}>
-                <AddNewNews openCloseModalWindow={openCloseModalWindow}/>
-            </Modal>
+            <div className={styles.paginator}>
+              <PaginatorNews
+                currentPage={currentPage}
+                pageSize={pageSize}
+                totalPlayersCount={totalPlayersCount}
+                onDispatchMethod={dispatchMethod}
+              />
+            </div>
+          </div>
         </div>
-    )
+      </div>
+      <Modal isOpen={modalIsOpen}
+             style={customStyles}
+             ariaHideApp={false}
+             contentLabel="Example Modal"
+             className={styles.modal}>
+        <AddUpdateNewNews openCloseModalWindow={openCloseModalWindow}/>
+      </Modal>
+    </div>
+  )
 }
 
 export default NewsPage

@@ -5,6 +5,7 @@ import {DateTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import Box from '@material-ui/core/Box';
 import {TextField} from 'formik-material-ui';
+import {NewsInfoType} from '../../../common/types';
 
 export type OneNewsType = {
   nameNews: string;
@@ -13,16 +14,34 @@ export type OneNewsType = {
 }
 
 export type NewsFormikType = {
-  onSubmit: (values: OneNewsType) => void
+  onSubmit: (values: OneNewsType) => void;
+  updateOneNews: (oneNews: OneNewsType, newsId: string) => void
+  news?: NewsInfoType
 }
 
-export const NewsFormik = ({onSubmit}: NewsFormikType) => {
+export const NewsFormik = ({onSubmit, updateOneNews, news}: NewsFormikType) => {
+  console.log('news ', news);
+  let nameNews = '';
+  let newsDate = new Date();
+  let textNews = '';
+  let foo = (values: any) => {
+    onSubmit(values)
+  }
+
+  if (news) {
+    nameNews = news.nameNews;
+    newsDate = news.dataValue;
+    textNews = news.textNews;
+    foo = (values: any) => {
+      updateOneNews(values, news._id)
+    }
+  }
   return (
     <Formik
       initialValues={{
-        nameNews: '',
-        newsDate: new Date(),
-        textNews: ''
+        nameNews,
+        newsDate,
+        textNews
       } as OneNewsType}
       validate={(values) => {
         const errors: Partial<{ nameNews: string, textNews: string }> = {};
@@ -35,7 +54,7 @@ export const NewsFormik = ({onSubmit}: NewsFormikType) => {
         return errors;
       }}
       onSubmit={(values) => {
-        onSubmit(values)
+        foo(values)
       }}
     >
       {({submitForm, isSubmitting}) => (

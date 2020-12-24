@@ -111,7 +111,7 @@ export type MatchesPageType = {
 
 //NewsPage
 export type NewsInfoType = {
-    dataValue: string,
+    dataValue: Date,
     nameNews: string,
     textNews: string,
     _id: string

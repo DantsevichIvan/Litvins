@@ -35,6 +35,20 @@ export const addNewsThunk = (newsInfo: OneNewsType) => async (dispatch: any) => 
   }
 }
 
+export const updateNewsThunk = (newsInfo: OneNewsType, updateNewsId: string) => async (dispatch: any) => {
+  const response: AddNewsResponseType = await newsApi.updateNews(newsInfo, updateNewsId)
+  if (response.status === 201) {
+    dispatch(getListNews(1, 8))
+  }
+}
+
+export const deleteNewsThunk = (deleteNewsId: string) => async (dispatch: any) => {
+  const response: AddNewsResponseType = await newsApi.deleteNews(deleteNewsId)
+  if (response.status === 201) {
+    dispatch(getListNews(1, 8))
+  }
+}
+
 export const fileUploadHandler = (fd: any) => async (dispatch: any) => {
   const data = await imageApi.uploadFile(fd)
 }
