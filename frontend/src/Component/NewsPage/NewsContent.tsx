@@ -10,7 +10,6 @@ import AddUpdateNewNews from './Form/AddUpdateNewNews';
 import Modal from 'react-modal';
 import {customStyles} from './NewsPage';
 import {deleteNewsThunk} from '../../action/newsActions';
-import {successMessages} from '../FormsControls/AuxiliaryFunction';
 import {useDispatch} from 'react-redux';
 
 
@@ -26,13 +25,11 @@ const NewsContent = ({news}: NewsContentProps) => {
     console.log('deleteNews ')
     dispatch(deleteNewsThunk(news._id))
     console.log('newsId ', news._id)
-    successMessages('Новость удалена')
   }
 
   const openCloseModalWindow = () => {
     setModalIsOpen(!updateNawsModalIsOpen)
   }
-
 
   return (
     <div className={styles.wrapper__container__content__cell}>

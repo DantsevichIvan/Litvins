@@ -1,6 +1,7 @@
 import {imageApi, newsApi} from "../api/api";
 import {setCurrentPage, setListNews, setMessage, setNews, setTotalUsersCount} from "../reducers/NewsReducer";
 import {OneNewsType} from '../Component/NewsPage/Form/NewsFormik';
+import {successMessages} from '../Component/FormsControls/AuxiliaryFunction';
 
 export const getListNews = (currentPage: number, pageSize: number) => async (dispatch: any) => {
   dispatch(setCurrentPage(currentPage))
@@ -19,7 +20,7 @@ export const getNews = (newsId: any) => async (dispatch: any) => {
   dispatch(setNews(data))
 }
 
-export type AddNewsResponseType = {
+export type NewsResponseType = {
   config: any;
   data: { message: string, success: boolean }
   headers: any
@@ -29,24 +30,27 @@ export type AddNewsResponseType = {
 }
 
 export const addNewsThunk = (newsInfo: OneNewsType) => async (dispatch: any) => {
-  const response: AddNewsResponseType = await newsApi.addNews(newsInfo)
+  const response: NewsResponseType = await newsApi.addNews(newsInfo)
   if (response.status === 201) {
+    successMessages('Новость добавлена')
     dispatch(getListNews(1, 8))
   }
 }
 
 export const updateNewsThunk = (newsInfo: OneNewsType, updateNewsId: string) => async (dispatch: any) => {
-  const response: AddNewsResponseType = await newsApi.updateNews(newsInfo, updateNewsId)
+  const response: NewsResponseType = await newsApi.updateNews(newsInfo, updateNewsId)
   console.log('updateNews response', response)
   if (response.status === 200) {
+    successMessages('Новость обновлена')
     dispatch(getListNews(1, 8))
   }
 }
 
 export const deleteNewsThunk = (deleteNewsId: string) => async (dispatch: any) => {
-  const response: AddNewsResponseType = await newsApi.deleteNews(deleteNewsId)
+  const response: NewsResponseType = await newsApi.deleteNews(deleteNewsId)
   console.log('deleteNews response', response)
   if (response.status === 200) {
+    successMessages('Новость удалена')
     dispatch(getListNews(1, 8))
   }
 }

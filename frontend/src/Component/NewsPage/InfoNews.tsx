@@ -47,22 +47,11 @@ const InfoNews:FC<NewsInfoType> = (props: any) => {
                         <div className={styles.wrapper__container__content__slider}>
                             <SliderListNews newsList={newsList}/>
                         </div>
-                        {/*<div className={styles.wrapper__container__content__commentsWrap}>*/}
-                        {/*    <div className={styles.wrapper__container__content__commentsWrap__content}>*/}
-                        {/*        <h3>Comments: <span>3</span></h3>*/}
-                        {/*        <div>*/}
-
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*    <div>*/}
-                        {/*        <h3></h3>*/}
-                        {/*        <form action=""></form>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
 export default InfoNews

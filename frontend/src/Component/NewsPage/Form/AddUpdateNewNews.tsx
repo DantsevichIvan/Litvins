@@ -1,5 +1,4 @@
 import {useDispatch} from "react-redux";
-import {successMessages} from "../../FormsControls/AuxiliaryFunction";
 import styles from "./AddNewsForm.module.css";
 import React from "react";
 import {addNewsThunk, updateNewsThunk} from "../../../action/newsActions";
@@ -16,14 +15,12 @@ export default function AddUpdateNewNews({openCloseModalWindow, news}: AddNewNew
 
   const addOneNews = (oneNews: OneNewsType) => {
     dispatch(addNewsThunk(oneNews))
-    successMessages('Новость добавлена')
     openCloseModalWindow()
   }
 
   const updateOneNews = (oneNews: OneNewsType, newsId: string) => {
     dispatch(updateNewsThunk(oneNews, newsId))
     console.log('newsId ', newsId)
-    successMessages('Новость обновлена')
     openCloseModalWindow()
   }
 
