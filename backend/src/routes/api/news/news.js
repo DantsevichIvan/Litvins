@@ -63,7 +63,8 @@ async function updateNews(req, res) {
   try {
     const id = req.params.id
     const {nameNews, newsDate, textNews} = req.body.newsInfo
-    await News.findByIdAndUpdate(id, {nameNews, newsDate, textNews}, async function (err, news) {
+    let dataValue = moment(newsDate).format('ll')
+    await News.findByIdAndUpdate(id, {nameNews, dataValue, textNews}, async function (err, news) {
         if(err) return res.status(400).json({message: `err: ${err}`})
         await res.status(200).json({news})
     })
