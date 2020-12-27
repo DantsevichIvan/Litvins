@@ -37,14 +37,16 @@ export const addNewsThunk = (newsInfo: OneNewsType) => async (dispatch: any) => 
 
 export const updateNewsThunk = (newsInfo: OneNewsType, updateNewsId: string) => async (dispatch: any) => {
   const response: AddNewsResponseType = await newsApi.updateNews(newsInfo, updateNewsId)
-  if (response.status === 201) {
+  console.log('updateNews response', response)
+  if (response.status === 200) {
     dispatch(getListNews(1, 8))
   }
 }
 
 export const deleteNewsThunk = (deleteNewsId: string) => async (dispatch: any) => {
   const response: AddNewsResponseType = await newsApi.deleteNews(deleteNewsId)
-  if (response.status === 201) {
+  console.log('deleteNews response', response)
+  if (response.status === 200) {
     dispatch(getListNews(1, 8))
   }
 }
