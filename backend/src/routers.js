@@ -13,15 +13,14 @@ module.exports = function (app) {
         next();
     })
     cors({origin: 'http://localhost:3000'})
-    app.use('/', require('./controllers/home.routes'));
-    app.use('/team', require('./controllers/team.routes'));
-    app.use('/list-matches', require('./controllers/matches.routes'));
-    app.use('/club',  require('./controllers/club.routes'));
-    app.use('/list-news', require('./controllers/news.routes'));
-    app.use('/contact', require('./controllers/contact.routes'));
-    app.use('/auth', require('./controllers/auth.router'));
-    app.use('/image', upload.single('photo'),require('./controllers/image.router'));
-    app.use('/statistic',require('./controllers/statistic.router'));
+    app.use('/', require('./routes/api/home/home.routes'));
+    app.use('/team', require('./routes/api/team/team.routes'));
+    app.use('/list-matches', require('./routes/api/matches/matches.routes'));
+    app.use('/club',  require('./routes/api/club/club.routes'));
+    app.use('/list-news', require('./routes/api/news/news'));
+    app.use('/contact', require('./routes/api/contact/contact.routes'));
+    app.use('/user', require('./routes/api/user/user'));
+    app.use('/statistic',require('./routes/api/statistic/statistic.router'));
 }
 
 

@@ -12,7 +12,7 @@ module.exports = function (app,expect){
                     position:'Нападающий'
                 }
                 app
-                    .post('/auth/register')
+                    .post('/user/register')
                     .send({data})
                     .end((err, res) => {
                         expect(res.body.success).to.equal(true)
@@ -26,7 +26,7 @@ module.exports = function (app,expect){
                     password: '123123'
                 }
                 app
-                    .post('/auth/login')
+                    .post('/user/login')
                     .send({data})
                     .end((err, res) => {
                         console.log(res.body.message)
@@ -37,7 +37,7 @@ module.exports = function (app,expect){
         describe('LogOut User', function () {
             it('Success should return true', function () {
                 app
-                    .get('/auth/logout')
+                    .get('/user/logout')
                     .end((err, res) => {
                         expect(res.body.success).to.equal(true)
                     })

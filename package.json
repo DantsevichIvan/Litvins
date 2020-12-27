@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "litvins",
   "version": "1.0.0",
   "private": true,
   "homepage": "https://dantsevichivan.github.io/Litvins",
@@ -49,9 +49,6 @@
     "supertest": "^6.0.1",
     "supertest-session": "^4.1.0"
   },
-  "name": "litvins",
-  "version": "1.0.0",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DantsevichIvan/Litvins.git"

@@ -1,11 +1,40 @@
-const Player = require('../models/Player')
+const Player = require('../../../models/Player')
 const bcrypt = require('bcrypt');
+const {Router} = require('express');
+const router = Router();
+
+router.post('/login', async (req, res, next) => {
+    await logIn(req,res)
+})
+router.get('/logout',async (req,res,next)=>{
+    await logOut(req, res)
+})
+router.post('/register', async (req, res, next) => {
+    await registration(req, res)
+})
 
 
-const logInSession = (req, playerId) =>{
-    req.session.playerId = playerId
+async function registration (req, res){
+    try {
+        const {name, birthday, email, password, position} = req.body.data
+        //checking whether there is a user
+        const found = await Player.exists({ email });
+        if (found) {
+            return res.status(400).json({ message: 'Такой пользователь уже существует' ,success:false})
+        }
+        //create hashedPassword
+        const hashedPassword = await bcrypt.hash(password, 12);
+        console.log(hashedPassword)
+        //create new player
+        const player = await Player.create({ email, password:hashedPassword,name,birthday, position});
+
+        // logInSession(req, player.id)
+
+        res.status(201).json({message:'Пользователь созда',success:true})
+    } catch (err) {
+        res.status(500).json({ message: err })
+    }
 }
-
 async function logIn(req, res){
     try {
         // extract data from req
@@ -29,7 +58,6 @@ async function logIn(req, res){
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова',success:false})
     }
 }
-
 async function logOut(req, res){
     try {
         // req.session.destroy((err)=>{
@@ -43,26 +71,6 @@ async function logOut(req, res){
     }
 }
 
-async function registration (req, res){
-    try {
-        const {name, birthday, email, password, position} = req.body.data
-        //checking whether there is a user
-        const found = await Player.exists({ email });
-        if (found) {
-            return res.status(400).json({ message: 'Такой пользователь уже существует' ,success:false})
-        }
-        //create hashedPassword
-        const hashedPassword = await bcrypt.hash(password, 12);
-        console.log(hashedPassword)
-        //create new player
-        const player = await Player.create({ email, password:hashedPassword,name,birthday, position});
 
-        // logInSession(req, player.id)
+module.exports = router
 
-        res.status(201).json({message:'Пользователь созда',success:true})
-    } catch (err) {
-        res.status(500).json({ message: err })
-    }
-}
-
-module.exports = {registration,logIn,logOut,logInSession}

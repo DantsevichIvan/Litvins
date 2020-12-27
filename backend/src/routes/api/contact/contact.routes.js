@@ -1,4 +1,4 @@
-const {getInfoContact} = require("../providers/contact");
+const {getInfoContact} = require("./contact");
 const {Router} = require('express');
 const router = Router();
 

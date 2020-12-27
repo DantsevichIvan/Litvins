@@ -1,4 +1,4 @@
-const {getInfoHomePage} = require("../providers/home");
+const {getInfoHomePage} = require("./home");
 const {Router} = require('express');
 const router = Router();
 

@@ -1,5 +1,5 @@
-const {getPaginator} = require("../services/middleware");
-const Player = require('../models/Player')
+const {getPaginator} = require("../../../services/middleware");
+const Player = require('../../../models/Player')
 
 async function getTeam(req, res) {
     try {

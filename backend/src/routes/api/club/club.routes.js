@@ -1,4 +1,4 @@
-const {getInfoClub,getInfoForYear} = require("../providers/club");
+const {getInfoClub,getInfoForYear} = require("./club");
 const {Router} = require('express');
 const router = Router();
 

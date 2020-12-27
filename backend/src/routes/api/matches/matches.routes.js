@@ -1,4 +1,4 @@
-const {getNextMatch,updateMatch,deleteMatch,addMatch,getMatch,getMatches} = require("../providers/matches");
+const {getNextMatch,updateMatch,deleteMatch,addMatch,getMatch,getMatches} = require("./matches");
 const {Router} = require('express');
 const router = Router();
 

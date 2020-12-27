@@ -1,6 +1,6 @@
-const {getPlayer} = require("../providers/team");
-const {getFilterArray} = require("../providers/team");
-const {getTeam} = require("../providers/team");
+const {getPlayer} = require("./team");
+const {getFilterArray} = require("./team");
+const {getTeam} = require("./team");
 const {Router} = require('express');
 const router = Router();
 

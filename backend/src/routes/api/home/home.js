@@ -1,5 +1,5 @@
-const {getListNewsHomePage} = require("./news");
-const {getLastMatchesAndNextMatch} = require("./matches");
+const {getListNewsHomePage} = require("../news/news");
+const {getLastMatchesAndNextMatch} = require("../matches/matches");
 
 
 function getStatisticsData() {
