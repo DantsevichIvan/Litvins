@@ -9,10 +9,7 @@
 
 - frontend/src/Component/AuthPage
 
-2) CRUD на новости
-   Добавить кнопки и обработчики удаления и обновления для новостей.
-   delete /news/:id
-   put /news/:id , {body}
+2) крашится без новостей
    
 3) CRUD  на матчи, кроме делита
 

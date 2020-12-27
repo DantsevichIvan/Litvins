@@ -1,11 +1,12 @@
 import {Button} from "antd";
 import React from "react";
 import {Field, Form, Formik} from "formik";
-import {DateTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import Box from '@material-ui/core/Box';
 import {TextField} from 'formik-material-ui';
 import {NewsInfoType} from '../../../common/types';
+import {DateTimePicker} from 'formik-material-ui-pickers';
 
 export type OneNewsType = {
   nameNews: string;

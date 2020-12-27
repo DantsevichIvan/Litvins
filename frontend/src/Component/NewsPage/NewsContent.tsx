@@ -41,7 +41,7 @@ const NewsContent = ({news}: NewsContentProps) => {
         </div>
         <div className={styles.wrapper__container__content__cell__info__infoText}>
           <div className={styles.wrapper__container__content__cell__info__infoText__date}>
-            <span>{moment(news.dataValue).format('ll')}</span>
+            <span>{moment(news.dataValue).format('LLL')}</span>
           </div>
           <div className={styles.wrapper__container__content__cell__info__infoText__name}>
             <h4>

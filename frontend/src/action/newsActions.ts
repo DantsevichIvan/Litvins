@@ -6,6 +6,7 @@ import {successMessages} from '../Component/FormsControls/AuxiliaryFunction';
 export const getListNews = (currentPage: number, pageSize: number) => async (dispatch: any) => {
   dispatch(setCurrentPage(currentPage))
   const data = await newsApi.getListNews(currentPage, pageSize)
+  console.log('getListNews data ', data)
   if (!data.newsList.pageOfItems.length) {
     dispatch(setListNews(data.newsList.pageOfItems))
     dispatch(setMessage(data))
